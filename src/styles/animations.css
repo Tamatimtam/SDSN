@@ -1,0 +1,146 @@
+/* ===== LOADING / SHIMMER ===== */
+@keyframes shimmer {
+    0% {
+        background-position: -200% 0;
+    }
+
+    100% {
+        background-position: 200% 0;
+    }
+}
+
+.shimmer {
+    background: linear-gradient(90deg,
+            var(--bg-card) 25%,
+            var(--bg-elevated) 50%,
+            var(--bg-card) 75%);
+    background-size: 200% 100%;
+    animation: shimmer 1.5s ease-in-out infinite;
+}
+
+/* ===== SCROLL INDICATOR ===== */
+@keyframes scrollPulse {
+
+    0%,
+    100% {
+        opacity: 0.3;
+        transform: scaleY(0.5);
+        transform-origin: top;
+    }
+
+    50% {
+        opacity: 1;
+        transform: scaleY(1);
+    }
+}
+
+/* ===== FLOAT ===== */
+@keyframes float {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* ===== REVEAL STATES ===== */
+[data-reveal] {
+    opacity: 0;
+    transform: translateY(30px);
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1),
+        transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+[data-reveal].revealed {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* ===== CARD TILT ON HOVER (CSS fallback) ===== */
+.tilt-hover {
+    transition: transform var(--transition-smooth);
+}
+
+.tilt-hover:hover {
+    transform: perspective(1000px) rotateX(2deg) rotateY(-2deg) scale(1.02);
+}
+
+/* ===== GLOW EFFECT ===== */
+.glow-effect {
+    position: relative;
+}
+
+.glow-effect::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(135deg, var(--gradient-start), var(--gradient-end));
+    border-radius: inherit;
+    opacity: 0;
+    z-index: -1;
+    filter: blur(16px);
+    transition: opacity var(--transition-fast);
+}
+
+.glow-effect:hover::before {
+    opacity: 0.4;
+}
+
+/* ===== MAGNETIC LINK INDICATOR ===== */
+[data-magnetic] {
+    display: inline-block;
+    transition: transform var(--transition-elastic);
+}
+
+/* ===== PARALLAX LAYERS ===== */
+.parallax-slow {
+    will-change: transform;
+}
+
+.parallax-medium {
+    will-change: transform;
+}
+
+.parallax-fast {
+    will-change: transform;
+}
+
+/* ===== STAGGER CHILDREN ===== */
+.stagger-children>* {
+    opacity: 0;
+    transform: translateY(20px);
+}
+
+.stagger-children.active>* {
+    opacity: 1;
+    transform: translateY(0);
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.stagger-children.active>*:nth-child(1) {
+    transition-delay: 0.05s;
+}
+
+.stagger-children.active>*:nth-child(2) {
+    transition-delay: 0.1s;
+}
+
+.stagger-children.active>*:nth-child(3) {
+    transition-delay: 0.15s;
+}
+
+.stagger-children.active>*:nth-child(4) {
+    transition-delay: 0.2s;
+}
+
+.stagger-children.active>*:nth-child(5) {
+    transition-delay: 0.25s;
+}
+
+.stagger-children.active>*:nth-child(6) {
+    transition-delay: 0.3s;
+}

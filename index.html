@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>SDSN Indonesia — Sustainable Development Solutions Network</title>
+    <meta name="description"
+        content="SDSN Indonesia mobilizes knowledge institutions to accelerate the Sustainable Development Goals. Hosted by Universitas Indonesia & United in Diversity." />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700&display=swap"
+        rel="stylesheet" />
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="./src/styles/main.css" />
+    <link rel="stylesheet" href="./src/styles/sections.css" />
+    <link rel="stylesheet" href="./src/styles/animations.css" />
+</head>
+
+<body>
+
+    <!-- ==================== HEADER ==================== -->
+    <header id="header" class="header">
+        <div class="header__inner">
+            <a href="#" class="header__logo">
+                <span class="logo-text">SDSN</span>
+                <span class="logo-sub">Indonesia</span>
+            </a>
+            <nav class="header__nav">
+                <a href="#about" class="nav-link" data-magnetic>About</a>
+                <a href="#sdgs" class="nav-link" data-magnetic>SDGs</a>
+                <a href="#news" class="nav-link" data-magnetic>News</a>
+                <a href="#events" class="nav-link" data-magnetic>Events</a>
+                <a href="#team" class="nav-link" data-magnetic>Team</a>
+            </nav>
+            <a href="#footer" class="header__cta">Get Involved</a>
+        </div>
+    </header>
+
+    <!-- ==================== HERO ==================== -->
+    <section id="hero" class="hero">
+        <div class="hero__video-wrap">
+            <video class="hero__video" autoplay muted loop playsinline>
+                <source src="https://videos.pexels.com/video-files/3571264/3571264-uhd_2560_1440_30fps.mp4"
+                    type="video/mp4" />
+            </video>
+            <div class="hero__overlay"></div>
+        </div>
+        <div class="hero__content">
+            <h1 class="hero__title kinetic-text" data-split>
+                <span class="line"><span class="word">SUSTAINABLE</span></span>
+                <span class="line"><span class="word">DEVELOPMENT</span></span>
+                <span class="line accent"><span class="word">SOLUTIONS</span></span>
+                <span class="line"><span class="word">NETWORK</span></span>
+            </h1>
+            <p class="hero__subtitle kinetic-text" data-split>Mobilizing knowledge for the SDGs — Indonesia Chapter</p>
+            <div class="hero__cta-wrap">
+                <a href="#about" class="btn-primary">
+                    <span class="btn-primary__bg"></span>
+                    <span class="btn-primary__text">Discover More</span>
+                    <i class="ph ph-arrow-down btn-primary__arrow"></i>
+                </a>
+            </div>
+        </div>
+        <div class="hero__scroll-indicator">
+            <div class="scroll-line"></div>
+            <span>Scroll</span>
+        </div>
+    </section>
+
+    <!-- ==================== ABOUT ==================== -->
+    <section id="about" class="about">
+        <div class="about__container">
+            <div class="about__label">
+                <span class="section-tag" data-reveal><i class="ph-bold ph-info"></i> Who We Are</span>
+            </div>
+            <div class="about__grid">
+                <div class="about__text-col">
+                    <h2 class="about__heading" data-reveal>
+                        Driving <em>sustainable solutions</em> across Indonesia
+                    </h2>
+                    <p class="about__desc" data-reveal>
+                        SDSN Indonesia, hosted by Universitas Indonesia and united in Diversity (UID), Jakarta, was
+                        established in 2013. We mobilize our members across Indonesia, leveraging their strengths to
+                        help realize the Sustainable Development Goals.
+                    </p>
+                    <p class="about__desc" data-reveal>
+                        Our key focus areas include addressing knowledge gaps among non-state actors and member
+                        institutions through co-organizing workshops, and mobilizing youth to create innovative
+                        solutions for societal challenges.
+                    </p>
+                </div>
+                <div class="about__stats-col">
+                    <div class="stat-card" data-reveal>
+                        <span class="stat-card__number" data-count="17">0</span>
+                        <span class="stat-card__label"><i class="ph ph-target"></i> SDG Goals</span>
+                    </div>
+                    <div class="stat-card" data-reveal>
+                        <span class="stat-card__number" data-count="2013">0</span>
+                        <span class="stat-card__label"><i class="ph ph-calendar-star"></i> Established</span>
+                    </div>
+                    <div class="stat-card" data-reveal>
+                        <span class="stat-card__number" data-count="40">0</span>
+                        <span class="stat-card__label"><i class="ph ph-buildings"></i> Member Institutions</span>
+                    </div>
+                    <div class="stat-card" data-reveal>
+                        <span class="stat-card__number" data-count="2">0</span>
+                        <span class="stat-card__label"><i class="ph ph-users-three"></i> Network Hosts</span>
+                    </div>
+                </div>
+            </div>
+            <div class="about__hosts" data-reveal>
+                <span class="hosts-label">Hosted by</span>
+                <div class="hosts-logos">
+                    <a href="https://www.ui.ac.id/en/" target="_blank" class="host-link">
+                        <span>Universitas Indonesia — SDG Hub</span>
+                    </a>
+                    <span class="hosts-divider">×</span>
+                    <a href="https://unitedindiversity.org/" target="_blank" class="host-link">
+                        <span>United in Diversity (UID)</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== SDGs CAROUSEL ==================== -->
+    <section id="sdgs" class="sdgs">
+        <div class="sdgs__header">
+            <span class="section-tag" data-reveal><i class="ph-bold ph-globe-hemisphere-east"></i> The Goals</span>
+            <h2 class="sdgs__title" data-reveal>17 Goals to Transform Our World</h2>
+            <p class="sdgs__subtitle" data-reveal>Scroll to explore each Sustainable Development Goal</p>
+        </div>
+        <div class="sdgs__carousel-wrap">
+            <div class="sdgs__carousel" id="sdgs-carousel">
+                <!-- Cards injected by JS -->
+            </div>
+        </div>
+        <div class="sdgs__progress">
+            <div class="sdgs__progress-bar"></div>
+        </div>
+    </section>
+
+    <!-- ==================== NEWS BENTO ==================== -->
+    <section id="news" class="news">
+        <div class="news__container">
+            <div class="news__header">
+                <span class="section-tag" data-reveal><i class="ph-bold ph-article"></i> Latest</span>
+                <h2 class="news__title" data-reveal>Featured News</h2>
+            </div>
+            <div class="news__bento" id="news-bento">
+                <!-- Cards injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== EVENTS ==================== -->
+    <section id="events" class="events">
+        <div class="events__container">
+            <div class="events__header">
+                <span class="section-tag" data-reveal><i class="ph-bold ph-calendar-blank"></i> Happenings</span>
+                <h2 class="events__title" data-reveal>Past Events</h2>
+            </div>
+            <div class="events__timeline" id="events-timeline">
+                <!-- Cards injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== TEAM ==================== -->
+    <section id="team" class="team">
+        <div class="team__container">
+            <div class="team__header">
+                <span class="section-tag" data-reveal><i class="ph-bold ph-users"></i> People</span>
+                <h2 class="team__title" data-reveal>Meet the Team</h2>
+            </div>
+            <div class="team__grid" id="team-grid">
+                <!-- Cards injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer id="footer" class="footer">
+        <div class="footer__inner">
+            <div class="footer__nav-col">
+                <h3 class="footer__big-link"><a href="#about">ABOUT</a></h3>
+                <h3 class="footer__big-link"><a href="#sdgs">SDGs</a></h3>
+                <h3 class="footer__big-link"><a href="#news">NEWS</a></h3>
+                <h3 class="footer__big-link"><a href="#events">EVENTS</a></h3>
+                <h3 class="footer__big-link"><a href="#team">TEAM</a></h3>
+            </div>
+            <div class="footer__info-col">
+                <div class="footer__links">
+                    <a href="#about">About SDSN</a>
+                    <a href="#">Resources</a>
+                    <a href="#">Publications</a>
+                    <a href="#">Contact</a>
+                    <a href="#">Privacy Policy</a>
+                </div>
+                <div class="footer__newsletter">
+                    <p>Stay updated on sustainable development news, events, and opportunities from SDSN Indonesia.</p>
+                    <form class="newsletter-form">
+                        <input type="email" placeholder="Email Address" class="newsletter-input" />
+                        <button type="submit" class="newsletter-btn">SUBSCRIBE</button>
+                    </form>
+                </div>
+                <div class="footer__socials">
+                    <span>FOLLOW US:</span>
+                    <a href="https://www.instagram.com/unsdsnid/" target="_blank" class="social-icon"
+                        aria-label="Instagram">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z" />
+                        </svg>
+                    </a>
+                    <a href="https://www.youtube.com/channel/UCXZOYi1J28o250vJhUE9A9Q" target="_blank"
+                        class="social-icon" aria-label="YouTube">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M19.615 3.184c-3.604-.246-11.631-.245-15.23 0-3.897.266-4.356 2.62-4.385 8.816.029 6.185.484 8.549 4.385 8.816 3.6.245 11.626.246 15.23 0 3.897-.266 4.356-2.62 4.385-8.816-.029-6.185-.484-8.549-4.385-8.816zm-10.615 12.816v-8l8 3.993-8 4.007z" />
+                        </svg>
+                    </a>
+                    <a href="https://twitter.com/SDSNIndonesia" target="_blank" class="social-icon"
+                        aria-label="X/Twitter">
+                        <svg viewBox="0 0 24 24" fill="currentColor">
+                            <path
+                                d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z" />
+                        </svg>
+                    </a>
+                </div>
+            </div>
+        </div>
+        <div class="footer__circles" id="footer-circles">
+            <!-- SDG-colored circles injected by JS -->
+        </div>
+        <div class="footer__bottom">
+            <span>© 2024 SDSN Indonesia. All rights reserved.</span>
+            <span>Part of the <a href="https://www.unsdsn.org" target="_blank">UN Sustainable Development Solutions
+                    Network</a></span>
+        </div>
+    </footer>
+
+    <!-- Main JS -->
+    <script type="module" src="./src/main.js"></script>
+</body>
+
+</html>
