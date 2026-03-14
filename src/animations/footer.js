@@ -75,7 +75,7 @@ export function initFooter() {
             x: 0,
             duration: 0.7,
             stagger: 0.1,
-            ease: 'power3.out',
+            ease: 'back.out(1.5)',
             scrollTrigger: {
                 trigger: bigLinks[0],
                 start: 'top 90%',
@@ -95,7 +95,7 @@ export function initFooter() {
                 y: 0,
                 duration: 0.6,
                 stagger: 0.15,
-                ease: 'power3.out',
+                ease: 'back.out(2)',
                 scrollTrigger: {
                     trigger: rightCol,
                     start: 'top 90%',

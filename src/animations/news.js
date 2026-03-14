@@ -36,7 +36,7 @@ export function initNews() {
                 y: 0,
                 duration: 0.7,
                 delay: i * 0.1,
-                ease: 'power3.out',
+                ease: 'back.out(1.5)',
                 scrollTrigger: {
                     trigger: el,
                     start: 'top 85%',
