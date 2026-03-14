@@ -22,6 +22,9 @@
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
+    <!-- Matter.js Physics Engine -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/matter-js/0.19.0/matter.min.js" defer></script>
+
     <!-- Styles -->
     <link rel="stylesheet" href="./src/styles/main.css" />
     <link rel="stylesheet" href="./src/styles/sections.css" />
@@ -193,6 +196,11 @@
 
     <!-- ==================== FOOTER ==================== -->
     <footer id="footer" class="footer">
+        <!-- Physics Canvas Wrapper -->
+        <div class="footer__physics-canvas">
+            <div id="canvas-target" class="canvas-target"></div>
+        </div>
+
         <div class="footer__inner">
             <div class="footer__nav-col">
                 <h3 class="footer__big-link"><a href="#about">ABOUT</a></h3>
@@ -241,9 +249,6 @@
                     </a>
                 </div>
             </div>
-        </div>
-        <div class="footer__circles" id="footer-circles">
-            <!-- SDG-colored circles injected by JS -->
         </div>
         <div class="footer__bottom">
             <span>© 2024 SDSN Indonesia. All rights reserved.</span>

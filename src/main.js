@@ -7,6 +7,7 @@ import { initNews } from './animations/news.js';
 import { initEvents } from './animations/events.js';
 import { initTeam } from './animations/team.js';
 import { initFooter } from './animations/footer.js';
+import { initFooterPhysics } from './animations/footer-physics.js';
 
 // Wait for GSAP to load (loaded via CDN with defer)
 function waitForGsap() {
@@ -45,6 +46,7 @@ async function init() {
     initEvents();
     initTeam();
     initFooter();
+    initFooterPhysics();
 
     // Smooth anchor scrolling
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {

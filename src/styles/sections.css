@@ -1001,28 +1001,34 @@
     transform: scale(1.2);
 }
 
-.footer__circles {
-    position: relative;
-    height: 120px;
-    overflow: hidden;
-    margin-top: var(--space-md);
-}
-
-.footer-circle {
+/* --- Footer SDGs Physics Canvas --- */
+.footer__physics-canvas {
     position: absolute;
-    border-radius: 50%;
-    border: 3px solid currentColor;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-family: var(--font-display);
-    font-weight: 700;
-    font-size: 0.9rem;
-    transition: transform var(--transition-elastic);
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    /* Let clicks pass through to links by default */
+    z-index: 1;
+    /* Below text (z-index 2), above background */
 }
 
-.footer-circle:hover {
-    transform: scale(1.2) translateY(-10px) !important;
+/* Ensure footer text stays above canvas */
+.footer__inner,
+.footer__bottom {
+    position: relative;
+    z-index: 2;
+    pointer-events: auto;
+    /* Re-enable clicks for text content */
+}
+
+.canvas-target {
+    width: 100%;
+    height: 100%;
+    pointer-events: auto;
+    /* Enable mouse interaction for the canvas itself */
 }
 
 .footer__bottom {
