@@ -22,6 +22,7 @@ export function initFooterPhysics() {
     let marqueeActive = false;
     let marqueeTickerFn = null;
     let transitionTimeout = null;
+    let initialDelayTimeout = null;
 
     function setupPhysics() {
         if (isInitialized) return;
@@ -188,28 +189,32 @@ export function initFooterPhysics() {
             gsap.ticker.remove(marqueeTickerFn);
         }
         clearTimeout(transitionTimeout);
+        clearTimeout(initialDelayTimeout);
 
-        // Drop exactly 17 boxes sequentially
-        let count = 0;
-        const dropInterval = setInterval(() => {
-            if (count < 17) {
-                dropSDG(config, count);
-                count++;
-            } else {
-                clearInterval(dropInterval);
+        // Wait 3 seconds before dropping the boxes
+        initialDelayTimeout = setTimeout(() => {
+            // Drop exactly 17 boxes sequentially
+            let count = 0;
+            const dropInterval = setInterval(() => {
+                if (count < 17) {
+                    dropSDG(config, count);
+                    count++;
+                } else {
+                    clearInterval(dropInterval);
 
-                // Trigger Marquee transition after 8 seconds of playtime
-                transitionTimeout = setTimeout(() => {
-                    transitionToMarquee(config);
-                }, 8000);
-            }
-        }, 120);
+                    // Trigger Marquee transition after 8 seconds of playtime
+                    transitionTimeout = setTimeout(() => {
+                        transitionToMarquee(config);
+                    }, 4000);
+                }
+            }, 120);
+        }, 10000);
     }
 
     // Initialize on scroll
     ScrollTrigger.create({
         trigger: '#footer',
-        start: 'top 60%',
+        start: 'top 30%', // Wait until the top of the footer has scrolled up to 30% from the top of the screen
         once: true,
         onEnter: () => {
             runSequence();
@@ -231,6 +236,7 @@ export function initFooterPhysics() {
 
                 if (marqueeTickerFn) gsap.ticker.remove(marqueeTickerFn);
                 clearTimeout(transitionTimeout);
+                clearTimeout(initialDelayTimeout);
 
                 // Simply rebuild and restart the sequence
                 // This resets the entire play -> marquee timeline
