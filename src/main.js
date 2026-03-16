@@ -116,14 +116,10 @@ async function init() {
         try {
             // === Lenis Smooth Scroll — slippery, buttery feel ===
             lenis = new Lenis({
-                duration: 1.4,
-                easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-                orientation: 'vertical',
-                gestureOrientation: 'vertical',
+                lerp: 0.08, // Adjust for slipperiness (default 0.1, lower is smoother)
                 smoothWheel: true,
                 wheelMultiplier: 1.0,
                 touchMultiplier: 2.0,
-                infinite: false,
             });
 
             // Connect Lenis to GSAP's ScrollTrigger
