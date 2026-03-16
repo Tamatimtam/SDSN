@@ -13,7 +13,7 @@ export function initAbout() {
                 y: 0,
                 duration: 0.8,
                 delay: i * 0.1,
-                ease: 'back.out(2)',
+                ease: 'back.out(3.5)',
                 scrollTrigger: {
                     trigger: el,
                     start: 'top 85%',
@@ -54,7 +54,7 @@ export function initAbout() {
             y: 0,
             duration: 0.6,
             stagger: 0.1,
-            ease: 'back.out(1.7)',
+            ease: 'back.out(3.5)',
             scrollTrigger: {
                 trigger: statCards[0],
                 start: 'top 85%',

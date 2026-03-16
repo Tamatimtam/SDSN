@@ -31,7 +31,7 @@ export function initEvents() {
                 y: 0,
                 duration: 0.7,
                 delay: i * 0.1,
-                ease: 'back.out(1.5)',
+                ease: 'back.out(3)',
                 scrollTrigger: {
                     trigger: el,
                     start: 'top 85%',
@@ -70,7 +70,7 @@ export function initEvents() {
                 x: 0,
                 y: 0,
                 duration: 0.8,
-                ease: 'back.out(1.5)',
+                ease: 'back.out(3)',
                 scrollTrigger: {
                     trigger: card,
                     start: 'top 85%',

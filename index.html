@@ -19,6 +19,9 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
 
+    <!-- Lenis Smooth Scroll -->
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js" defer></script>
+
     <!-- Phosphor Icons -->
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
@@ -37,15 +40,90 @@
     <header id="header" class="header">
         <div class="header__inner">
             <a href="#" class="header__logo">
-                <span class="logo-text">SDSN</span>
-                <span class="logo-sub">Indonesia</span>
+                <img src="./src/assets/logo.png" alt="SDSN Indonesia" class="header__logo-img" />
             </a>
             <nav class="header__nav">
-                <a href="#about" class="nav-link" data-magnetic>About</a>
-                <a href="#sdgs" class="nav-link" data-magnetic>SDGs</a>
-                <a href="#news" class="nav-link" data-magnetic>News</a>
-                <a href="#events" class="nav-link" data-magnetic>Events</a>
-                <a href="#team" class="nav-link" data-magnetic>Team</a>
+                <div class="nav-item">
+                    <a href="#about" class="nav-link" data-magnetic>About</a>
+                    <div class="nav-dropdown">
+                        <div class="nav-dropdown__inner">
+                            <div class="nav-dropdown__col">
+                                <h4 class="nav-dropdown__heading">Who We Are</h4>
+                                <a href="#about" class="nav-dropdown__link">About SDSN Indonesia</a>
+                                <a href="#about" class="nav-dropdown__link">Our Mission & Vision</a>
+                                <a href="#about" class="nav-dropdown__link">Governance</a>
+                            </div>
+                            <div class="nav-dropdown__col">
+                                <h4 class="nav-dropdown__heading">Network</h4>
+                                <a href="#about" class="nav-dropdown__link">Member Institutions</a>
+                                <a href="#about" class="nav-dropdown__link">Host Organizations</a>
+                                <a href="https://www.unsdsn.org" target="_blank" class="nav-dropdown__link">UN SDSN
+                                    Global</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="#sdgs" class="nav-link" data-magnetic>SDGs</a>
+                    <div class="nav-dropdown">
+                        <div class="nav-dropdown__inner">
+                            <div class="nav-dropdown__col">
+                                <h4 class="nav-dropdown__heading">The Goals</h4>
+                                <a href="#sdgs" class="nav-dropdown__link">All 17 Goals</a>
+                                <a href="#sdgs" class="nav-dropdown__link">Indonesia Progress</a>
+                                <a href="#sdgs" class="nav-dropdown__link">SDG Dashboard</a>
+                            </div>
+                            <div class="nav-dropdown__col">
+                                <h4 class="nav-dropdown__heading">Resources</h4>
+                                <a href="#sdgs" class="nav-dropdown__link">Publications</a>
+                                <a href="#sdgs" class="nav-dropdown__link">Data & Reports</a>
+                                <a href="#sdgs" class="nav-dropdown__link">Research</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="#news" class="nav-link" data-magnetic>News</a>
+                    <div class="nav-dropdown">
+                        <div class="nav-dropdown__inner">
+                            <div class="nav-dropdown__col nav-dropdown__col--wide">
+                                <h4 class="nav-dropdown__heading">Latest</h4>
+                                <a href="#news" class="nav-dropdown__link">Featured Stories</a>
+                                <a href="#news" class="nav-dropdown__link">Press Releases</a>
+                                <a href="#news" class="nav-dropdown__link">Blog</a>
+                                <a href="#news" class="nav-dropdown__link">Media Coverage</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="#events" class="nav-link" data-magnetic>Events</a>
+                    <div class="nav-dropdown">
+                        <div class="nav-dropdown__inner">
+                            <div class="nav-dropdown__col nav-dropdown__col--wide">
+                                <h4 class="nav-dropdown__heading">Happenings</h4>
+                                <a href="#events" class="nav-dropdown__link">Upcoming Events</a>
+                                <a href="#events" class="nav-dropdown__link">Past Events</a>
+                                <a href="#events" class="nav-dropdown__link">Workshops</a>
+                                <a href="#events" class="nav-dropdown__link">Conferences</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="nav-item">
+                    <a href="#team" class="nav-link" data-magnetic>Team</a>
+                    <div class="nav-dropdown">
+                        <div class="nav-dropdown__inner">
+                            <div class="nav-dropdown__col nav-dropdown__col--wide">
+                                <h4 class="nav-dropdown__heading">People</h4>
+                                <a href="#team" class="nav-dropdown__link">Leadership</a>
+                                <a href="#team" class="nav-dropdown__link">Advisory Board</a>
+                                <a href="#team" class="nav-dropdown__link">SDSN Youth</a>
+                                <a href="#team" class="nav-dropdown__link">Join Us</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
             </nav>
             <a href="#footer" class="header__cta">Get Involved</a>
         </div>
@@ -61,13 +139,16 @@
             <div class="hero__overlay"></div>
         </div>
         <div class="hero__content">
-            <h1 class="hero__title kinetic-text" data-split>
-                <span class="line"><span class="word">SUSTAINABLE</span></span>
-                <span class="line"><span class="word">DEVELOPMENT</span></span>
-                <span class="line accent"><span class="word">SOLUTIONS</span></span>
-                <span class="line"><span class="word">NETWORK</span></span>
+            <div class="hero__logo-wrap">
+                <img src="./src/assets/logo.png" alt="SDSN Indonesia" class="hero__logo" id="hero-logo" />
+            </div>
+            <p class="hero__tagline">Mobilizing Knowledge Institutions to Accelerate the</p>
+            <h1 class="hero__title-new">
+                <span class="hero__title-word">Sustainable</span>
+                <span class="hero__title-word hero__title-word--accent">Development</span>
+                <span class="hero__title-word">Goals</span>
             </h1>
-            <p class="hero__subtitle kinetic-text" data-split>Mobilizing knowledge for the SDGs — Indonesia Chapter</p>
+            <p class="hero__subtitle">Indonesia Chapter — Est. 2013</p>
             <div class="hero__cta-wrap">
                 <a href="#about" class="btn-primary">
                     <span class="btn-primary__bg"></span>

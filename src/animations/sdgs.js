@@ -31,7 +31,7 @@ export function initSDGs() {
                 y: 0,
                 duration: 0.7,
                 delay: i * 0.1,
-                ease: 'back.out(1.5)',
+                ease: 'back.out(3)',
                 scrollTrigger: {
                     trigger: el,
                     start: 'top 85%',
@@ -77,7 +77,7 @@ export function initSDGs() {
                     scale: 1,
                     duration: 0.6,
                     delay: i * 0.03,
-                    ease: 'back.out(1.2)',
+                    ease: 'back.out(3)',
                     scrollTrigger: {
                         trigger: '.sdgs__carousel-wrap',
                         start: 'top 80%',

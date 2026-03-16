@@ -73,6 +73,6 @@ export const events = [
         date: "November 2022",
         location: "Bali, Indonesia",
         description: "Historic launch to unlock green investment for the Global South during Indonesia's G20 presidency.",
-        image: "https://images.unsplash.com/photo-1604689598793-b43e1fc44006?w=600&q=80"
+        image: "https://images.unsplash.com/photo-1587825140708-dfaf72ae4b04?w=600&q=80"
     }
 ];

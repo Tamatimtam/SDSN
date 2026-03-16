@@ -1,4 +1,5 @@
 /* ===== DESIGN TOKENS ===== */
+
 :root {
   /* Colors - Light Theme */
   --bg-primary: #ffffff;
@@ -16,13 +17,44 @@
   /* SDG 16 Blue */
   --accent-glow: rgba(229, 36, 59, 0.15);
 
-  /* SDG Gradient Multi-color */
-  --gradient-start: #E5243B;
-  /* Red */
-  --gradient-mid: #FCC30B;
-  /* Yellow */
-  --gradient-end: #4C9F38;
-  /* Green */
+  /* 17 SDG Colors */
+  --sdg-1: #E5243B;
+  --sdg-2: #DDA63A;
+  --sdg-3: #4C9F38;
+  --sdg-4: #C5192D;
+  --sdg-5: #FF3A21;
+  --sdg-6: #26BDE2;
+  --sdg-7: #FCC30B;
+  --sdg-8: #A21942;
+  --sdg-9: #FD6925;
+  --sdg-10: #DD1367;
+  --sdg-11: #FD9D24;
+  --sdg-12: #BF8B2E;
+  --sdg-13: #3F7E44;
+  --sdg-14: #0A97D9;
+  --sdg-15: #56C02B;
+  --sdg-16: #00689D;
+  --sdg-17: #19486A;
+
+  /* SDG Gradient Multi-color (all 17 with crisp hard stops for a ribbon effect) */
+  --gradient-sdg-colors:
+    var(--sdg-1) 0% 5.88%,
+    var(--sdg-2) 5.88% 11.76%,
+    var(--sdg-3) 11.76% 17.64%,
+    var(--sdg-4) 17.64% 23.52%,
+    var(--sdg-5) 23.52% 29.41%,
+    var(--sdg-6) 29.41% 35.29%,
+    var(--sdg-7) 35.29% 41.17%,
+    var(--sdg-8) 41.17% 47.05%,
+    var(--sdg-9) 47.05% 52.94%,
+    var(--sdg-10) 52.94% 58.82%,
+    var(--sdg-11) 58.82% 64.70%,
+    var(--sdg-12) 64.70% 70.58%,
+    var(--sdg-13) 70.58% 76.47%,
+    var(--sdg-14) 76.47% 82.35%,
+    var(--sdg-15) 82.35% 88.23%,
+    var(--sdg-16) 88.23% 94.11%,
+    var(--sdg-17) 94.11% 100%;
 
   --border-subtle: rgba(0, 0, 0, 0.08);
   --border-hover: rgba(0, 0, 0, 0.15);

@@ -36,7 +36,7 @@ export function initNews() {
                 y: 0,
                 duration: 0.7,
                 delay: i * 0.1,
-                ease: 'back.out(1.5)',
+                ease: 'back.out(3)',
                 scrollTrigger: {
                     trigger: el,
                     start: 'top 85%',
@@ -74,7 +74,7 @@ export function initNews() {
                 rotation: 0,
                 scale: 1,
                 duration: 0.8,
-                ease: 'power3.out',
+                ease: 'back.out(3)',
                 scrollTrigger: {
                     trigger: card,
                     start: 'top 90%',

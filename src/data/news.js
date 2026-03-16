@@ -13,7 +13,7 @@ export const news = [
         date: "05 Dec 2024 – 06 Dec 2024",
         tags: ["Sustainability"],
         type: "standard",
-        image: "https://images.unsplash.com/photo-1523050854058-8df90110c476?w=800&q=80",
+        image: "https://images.unsplash.com/photo-1505373877841-8d25f7d46678?w=800&q=80",
         link: "#"
     },
     {
@@ -21,7 +21,7 @@ export const news = [
         date: "07 Feb 2024",
         tags: ["Sustainability", "News"],
         type: "standard",
-        image: "https://images.unsplash.com/photo-1559223607-180d0c3a4d04?w=800&q=80",
+        image: "https://images.unsplash.com/photo-1561489396-888724a1543d?w=800&q=80",
         link: "#"
     },
     {

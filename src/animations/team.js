@@ -28,7 +28,7 @@ export function initTeam() {
                 y: 0,
                 duration: 0.7,
                 delay: i * 0.1,
-                ease: 'back.out(1.5)',
+                ease: 'back.out(3)',
                 scrollTrigger: {
                     trigger: el,
                     start: 'top 85%',
@@ -48,7 +48,7 @@ export function initTeam() {
             scale: 1,
             duration: 0.6,
             stagger: 0.1,
-            ease: 'back.out(2)',
+            ease: 'back.out(3.5)',
             scrollTrigger: {
                 trigger: grid,
                 start: 'top 85%',

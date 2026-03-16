@@ -1,4 +1,4 @@
-// Header animation — glassmorphic hide/show on scroll, magnetic nav links
+// Header animation — glassmorphic hide/show, magnetic links, dropdown mega-menus with GSAP
 export function initHeader() {
     const header = document.getElementById('header');
     if (!header) return;
@@ -19,6 +19,8 @@ export function initHeader() {
         // Hide on scroll down, show on scroll up
         if (currentScrollY > lastScrollY && currentScrollY > 200) {
             header.classList.add('hidden');
+            // Close any open dropdowns when header hides
+            closeAllDropdowns();
         } else {
             header.classList.remove('hidden');
         }
@@ -34,7 +36,7 @@ export function initHeader() {
         }
     });
 
-    // Magnetic nav links
+    // === Magnetic nav links ===
     const magneticLinks = header.querySelectorAll('[data-magnetic]');
     magneticLinks.forEach(link => {
         link.addEventListener('mousemove', (e) => {
@@ -59,12 +61,136 @@ export function initHeader() {
         });
     });
 
-    // Animate header in on load
-    gsap.from(header, {
-        y: -100,
-        opacity: 0,
-        duration: 1,
-        delay: 0.5,
-        ease: 'power3.out'
+    // === Dropdown Mega Menus ===
+    const navItems = header.querySelectorAll('.nav-item');
+    let activeDropdown = null;
+    let closeTimeout = null;
+
+    function openDropdown(navItem) {
+        if (closeTimeout) {
+            clearTimeout(closeTimeout);
+            closeTimeout = null;
+        }
+
+        // Close other dropdowns first
+        if (activeDropdown && activeDropdown !== navItem) {
+            closeDropdown(activeDropdown, true);
+        }
+
+        if (activeDropdown === navItem) return;
+
+        activeDropdown = navItem;
+        navItem.classList.add('dropdown-active');
+
+        const dropdown = navItem.querySelector('.nav-dropdown');
+        const inner = navItem.querySelector('.nav-dropdown__inner');
+        const links = navItem.querySelectorAll('.nav-dropdown__link');
+        const headings = navItem.querySelectorAll('.nav-dropdown__heading');
+
+        // Animate the dropdown panel
+        gsap.killTweensOf([dropdown, inner, links, headings]);
+
+        gsap.set(dropdown, { opacity: 1 });
+        gsap.fromTo(inner,
+            { scaleY: 0, scaleX: 0.95, opacity: 0 },
+            {
+                scaleY: 1,
+                scaleX: 1,
+                opacity: 1,
+                duration: 0.45,
+                ease: 'back.out(3)', // Overshoot bounce on open
+            }
+        );
+
+        // Stagger headings in with bounce
+        gsap.fromTo(headings,
+            { opacity: 0, y: -10 },
+            {
+                opacity: 1,
+                y: 0,
+                duration: 0.35,
+                stagger: 0.05,
+                delay: 0.15,
+                ease: 'back.out(3)',
+            }
+        );
+
+        // Stagger links in with bounce
+        gsap.fromTo(links,
+            { opacity: 0, x: -12, y: 5 },
+            {
+                opacity: 1,
+                x: 0,
+                y: 0,
+                duration: 0.35,
+                stagger: 0.04,
+                delay: 0.2,
+                ease: 'back.out(3)', // Bouncy entrance per link
+            }
+        );
+    }
+
+    function closeDropdown(navItem, immediate = false) {
+        if (!navItem) return;
+
+        const dropdown = navItem.querySelector('.nav-dropdown');
+        const inner = navItem.querySelector('.nav-dropdown__inner');
+
+        const duration = immediate ? 0.2 : 0.3;
+
+        gsap.to(inner, {
+            scaleY: 0,
+            opacity: 0,
+            duration: duration,
+            ease: 'power2.in',
+            onComplete: () => {
+                navItem.classList.remove('dropdown-active');
+                gsap.set(dropdown, { opacity: 0 });
+            }
+        });
+
+        if (activeDropdown === navItem) {
+            activeDropdown = null;
+        }
+    }
+
+    function closeAllDropdowns() {
+        navItems.forEach(item => {
+            if (item.classList.contains('dropdown-active')) {
+                closeDropdown(item, true);
+            }
+        });
+    }
+
+    navItems.forEach(navItem => {
+        navItem.addEventListener('mouseenter', () => {
+            openDropdown(navItem);
+        });
+
+        navItem.addEventListener('mouseleave', () => {
+            closeTimeout = setTimeout(() => {
+                closeDropdown(navItem);
+            }, 150); // Small delay to allow mouse to move to dropdown
+        });
     });
+
+    // Close dropdowns on scroll
+    window.addEventListener('scroll', () => {
+        if (activeDropdown) {
+            closeAllDropdowns();
+        }
+    }, { passive: true });
+
+    // === Animate header in on load — with overshoot ===
+    // Using fromTo instead of from for Firefox reliability
+    gsap.fromTo(header,
+        { y: -100, opacity: 0 },
+        {
+            y: 0,
+            opacity: 1,
+            duration: 1.2,
+            delay: 0.3,
+            ease: 'back.out(3)',
+        }
+    );
 }
