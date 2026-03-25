@@ -176,6 +176,41 @@ async function init() {
         });
     });
 
+    // === Back to Top Button ===
+    const backToTopBtn = document.getElementById('back-to-top');
+    if (backToTopBtn) {
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 800) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        }, { passive: true });
+
+        backToTopBtn.addEventListener('click', () => {
+            if (lenis) {
+                lenis.scrollTo(0, { duration: 1.5 });
+            } else {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            }
+        });
+    }
+
+    // === Skip SDGs Button ===
+    const skipSdgsBtn = document.getElementById('skip-sdgs');
+    if (skipSdgsBtn) {
+        skipSdgsBtn.addEventListener('click', () => {
+            const newsSection = document.getElementById('news');
+            if (newsSection) {
+                if (lenis) {
+                    lenis.scrollTo(newsSection, { offset: -80, duration: 1.5 });
+                } else {
+                    newsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                }
+            }
+        });
+    }
+
     // Refresh ScrollTrigger after all content is loaded
     window.addEventListener('load', () => {
         ScrollTrigger.refresh();

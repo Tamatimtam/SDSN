@@ -126,8 +126,26 @@
                 </div>
             </nav>
             <a href="#footer" class="header__cta">Get Involved</a>
+            <!-- Mobile Hamburger -->
+            <button class="header__hamburger" id="hamburger" aria-label="Open menu" aria-expanded="false">
+                <span class="hamburger__bar"></span>
+                <span class="hamburger__bar"></span>
+                <span class="hamburger__bar"></span>
+            </button>
         </div>
     </header>
+
+    <!-- Mobile Nav Drawer -->
+    <div class="mobile-nav" id="mobile-nav" aria-hidden="true">
+        <div class="mobile-nav__inner">
+            <a href="#about" class="mobile-nav__link">About</a>
+            <a href="#sdgs" class="mobile-nav__link">SDGs</a>
+            <a href="#news" class="mobile-nav__link">News</a>
+            <a href="#events" class="mobile-nav__link">Events</a>
+            <a href="#team" class="mobile-nav__link">Team</a>
+            <a href="#footer" class="mobile-nav__cta">Get Involved</a>
+        </div>
+    </div>
 
     <!-- ==================== HERO ==================== -->
     <section id="hero" class="hero">
@@ -231,6 +249,12 @@
                 <!-- Cards injected by JS -->
             </div>
         </div>
+
+        <!-- Skip Goals Button (Mobile Appears on Pin) -->
+        <button id="skip-sdgs" class="btn-skip" aria-label="Skip SDG Goals">
+            Skip Goals <i class="ph ph-arrow-down"></i>
+        </button>
+
         <div class="sdgs__progress">
             <div class="sdgs__progress-bar"></div>
         </div>
@@ -332,11 +356,16 @@
             </div>
         </div>
         <div class="footer__bottom">
-            <span>© 2024 SDSN Indonesia. All rights reserved.</span>
-            <span>Part of the <a href="https://www.unsdsn.org" target="_blank">UN Sustainable Development Solutions
-                    Network</a></span>
+            <div class="footer__legal">
+                <span>&copy; 2024 Sustainable Development Solutions Network Indonesia. All rights reserved.</span>
+            </div>
         </div>
     </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="btn-back-to-top" aria-label="Back to top">
+        <i class="ph ph-arrow-up"></i>
+    </button>
 
     <!-- Main JS -->
     <script type="module" src="./src/main.js"></script>
