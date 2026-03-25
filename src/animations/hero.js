@@ -13,10 +13,37 @@ export function initHero() {
     const headerLogo = document.querySelector('.header__logo-img');
     const header = document.getElementById('header');
 
+    // === Split Title Words into Colored Letters ===
+    let charIndex = 0;
+    const titleChars = [];
+
+    titleWords.forEach(word => {
+        const text = word.textContent.trim();
+        word.textContent = ''; // Clear original text
+        word.style.opacity = 1; // Unhide the word wrapper
+
+        for (let i = 0; i < text.length; i++) {
+            const charSpan = document.createElement('span');
+            charSpan.textContent = text[i];
+            charSpan.className = 'hero__title-char';
+            charSpan.style.display = 'inline-block';
+
+            // Apply SDG colors sequentially (1 to 17) ONLY to the accent word
+            if (word.classList.contains('hero__title-word--accent')) {
+                const sdgNum = (charIndex % 17) + 1;
+                charSpan.style.color = `var(--sdg-${sdgNum})`;
+                charIndex++;
+            }
+
+            word.appendChild(charSpan);
+            titleChars.push(charSpan);
+        }
+    });
+
     // === Initial states ===
     gsap.set(heroLogo, { scale: 0, opacity: 0, rotation: -5 });
     gsap.set(tagline, { opacity: 0, y: 20 });
-    gsap.set(titleWords, { opacity: 0, y: 40, scale: 0.8 });
+    gsap.set(titleChars, { opacity: 0, y: 30, scale: 0.8 }); // initial state for characters
     gsap.set([subtitle, ctaWrap, scrollIndicator], { opacity: 0, y: 20 });
 
     // === Entrance Timeline — Overshoot Bouncy ===
@@ -37,13 +64,13 @@ export function initHero() {
             duration: 0.8,
             ease: 'back.out(3)',
         }, '-=0.7')
-        // Title words stagger in with overshoot
-        .to(titleWords, {
+        // Title characters stagger in with overshoot highly sped up
+        .to(titleChars, {
             opacity: 1,
             y: 0,
             scale: 1,
-            duration: 0.9,
-            stagger: 0.12,
+            duration: 0.6,
+            stagger: 0.03, // much faster stagger for individual letters
             ease: 'back.out(3.5)',
         }, '-=0.5')
         // Subtitle
@@ -92,12 +119,12 @@ export function initHero() {
         }
     });
 
-    // Title words fade out
-    gsap.to(titleWords, {
+    // Title characters fade out on scroll
+    gsap.to(titleChars, {
         opacity: 0,
         y: -30,
         scale: 0.9,
-        stagger: 0.02,
+        stagger: 0.01, // extremely fast stagger for exit
         immediateRender: false,
         scrollTrigger: {
             trigger: hero,

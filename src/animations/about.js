@@ -23,6 +23,28 @@ export function initAbout() {
         );
     });
 
+    // === SDG Colored Letters for Heading ===
+    const headingEm = section.querySelector('.about__heading em');
+    if (headingEm) {
+        const text = headingEm.textContent.trim();
+        headingEm.textContent = ''; // clear original
+
+        // Split and color
+        let charIndex = 0;
+        for (let i = 0; i < text.length; i++) {
+            const charSpan = document.createElement('span');
+            charSpan.textContent = text[i];
+
+            // Only apply color to non-space characters to keep index aligned
+            if (text[i].trim() !== '') {
+                const sdgNum = (charIndex % 17) + 1;
+                charSpan.style.color = `var(--sdg-${sdgNum})`;
+                charIndex++;
+            }
+            headingEm.appendChild(charSpan);
+        }
+    }
+
     // Counter animations
     const counters = section.querySelectorAll('[data-count]');
     counters.forEach(counter => {
