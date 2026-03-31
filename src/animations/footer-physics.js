@@ -106,8 +106,8 @@ export function initFooterPhysics() {
             render: {
                 sprite: {
                     texture: sdg.icon,
-                    xScale: (config.boxSize * 1.4) / 466, // Icon native resolution is 466x466
-                    yScale: (config.boxSize * 1.4) / 466
+                    xScale: (config.boxSize * 1.4) / 1500, // Icon native resolution is 1500x1500
+                    yScale: (config.boxSize * 1.4) / 1500
                 }
             }
         });

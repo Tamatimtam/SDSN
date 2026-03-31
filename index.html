@@ -240,20 +240,21 @@
     <!-- ==================== SDGs CAROUSEL ==================== -->
     <section id="sdgs" class="sdgs">
         <div class="sdgs__header">
-            <span class="section-tag" data-reveal><i class="ph-bold ph-globe-hemisphere-east"></i> The Goals</span>
-            <h2 class="sdgs__title" data-reveal>17 Goals to Transform Our World</h2>
-            <p class="sdgs__subtitle" data-reveal>Scroll to explore each Sustainable Development Goal</p>
+            <div class="sdgs__header-text">
+                <span class="section-tag" data-reveal><i class="ph-bold ph-globe-hemisphere-east"></i> The Goals</span>
+                <h2 class="sdgs__title" data-reveal>17 Goals to Transform Our World</h2>
+                <p class="sdgs__subtitle" data-reveal>Scroll to explore each Sustainable Development Goal</p>
+            </div>
+            <!-- Skip Goals Button moved to top right -->
+            <button id="skip-sdgs" class="btn-skip" aria-label="Skip SDG Goals">
+                Skip Goals <i class="ph ph-arrow-down"></i>
+            </button>
         </div>
         <div class="sdgs__carousel-wrap">
             <div class="sdgs__carousel" id="sdgs-carousel">
                 <!-- Cards injected by JS -->
             </div>
         </div>
-
-        <!-- Skip Goals Button (Mobile Appears on Pin) -->
-        <button id="skip-sdgs" class="btn-skip" aria-label="Skip SDG Goals">
-            Skip Goals <i class="ph ph-arrow-down"></i>
-        </button>
 
         <div class="sdgs__progress">
             <div class="sdgs__progress-bar"></div>

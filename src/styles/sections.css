@@ -284,6 +284,7 @@
 
 .hero__title-word--accent {
     /* Colors applied dynamically via JS per letter */
+    color: var(--accent);
 }
 
 .hero__subtitle {
@@ -489,7 +490,7 @@
 
 /* ===== SDGs CAROUSEL ===== */
 .sdgs {
-    padding: var(--space-2xl) 0 var(--space-lg);
+    padding: calc(80px + var(--space-lg)) 0 var(--space-lg);
     overflow: hidden;
     position: relative;
 }
@@ -499,6 +500,10 @@
     margin: 0 auto;
     padding: 0 var(--container-padding);
     margin-bottom: var(--space-lg);
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    gap: var(--space-md);
 }
 
 .sdgs__title {
@@ -522,7 +527,10 @@
 .sdgs__carousel {
     display: flex;
     gap: var(--space-md);
-    padding: var(--space-md) var(--container-padding);
+    padding-top: var(--space-md);
+    padding-bottom: var(--space-md);
+    padding-left: max(var(--container-padding), calc((100vw - var(--container-max)) / 2 + var(--container-padding)));
+    padding-right: max(var(--container-padding), calc((100vw - var(--container-max)) / 2 + var(--container-padding)));
     will-change: transform;
 }
 
@@ -708,6 +716,7 @@
     line-height: 1.3;
     margin-bottom: 0.75rem;
     display: -webkit-box;
+    line-clamp: 3;
     -webkit-line-clamp: 3;
     -webkit-box-orient: vertical;
     overflow: hidden;
@@ -715,6 +724,7 @@
 
 .news-card--large .news-card__title {
     font-size: 1.4rem;
+    line-clamp: 4;
     -webkit-line-clamp: 4;
 }
 
@@ -1275,10 +1285,6 @@
 
 /* Skip SDGs Button */
 .btn-skip {
-    position: absolute;
-    bottom: 30px;
-    left: 50%;
-    transform: translateX(-50%);
     background: var(--bg-card);
     color: var(--text-primary);
     padding: 0.6em 1.5em;
@@ -1293,12 +1299,14 @@
     z-index: 10;
     cursor: pointer;
     transition: background var(--transition-fast), transform var(--transition-elastic);
+    white-space: nowrap;
+    flex-shrink: 0;
 }
 
 .btn-skip:hover {
     background: var(--accent);
     color: var(--bg-primary);
-    transform: translateX(-50%) translateY(-3px) scale(1.05);
+    transform: translateY(-3px) scale(1.05);
 }
 
 .footer__bottom {
@@ -1358,6 +1366,12 @@
 
     .btn-skip {
         display: flex;
+    }
+
+    .sdgs__header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--space-sm);
     }
 
     .hero__title-new {

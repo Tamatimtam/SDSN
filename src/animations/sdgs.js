@@ -51,8 +51,8 @@ export function initSDGs() {
             x: -totalScrollWidth,
             ease: 'none',
             scrollTrigger: {
-                trigger: '.sdgs__carousel-wrap',
-                start: 'top 20%',
+                trigger: '.sdgs',
+                start: 'top 10px',
                 end: () => `+=${totalScrollWidth}`,
                 pin: true,
                 scrub: 1,
@@ -79,7 +79,7 @@ export function initSDGs() {
                     delay: i * 0.03,
                     ease: 'back.out(3)',
                     scrollTrigger: {
-                        trigger: '.sdgs__carousel-wrap',
+                        trigger: '.sdgs',
                         start: 'top 80%',
                         toggleActions: 'play none none none'
                     }
