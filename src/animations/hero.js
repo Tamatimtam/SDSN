@@ -14,29 +14,52 @@ export function initHero() {
     const header = document.getElementById('header');
 
     // === Split Title Words into Colored Letters ===
-    let charIndex = 0;
     const titleChars = [];
 
     titleWords.forEach(word => {
-        const text = word.textContent.trim();
-        word.textContent = ''; // Clear original text
-        word.style.opacity = 1; // Unhide the word wrapper
+        const isDevWord = word.classList.contains('hero__title-word--dev');
 
-        for (let i = 0; i < text.length; i++) {
-            const charSpan = document.createElement('span');
-            charSpan.textContent = text[i];
-            charSpan.className = 'hero__title-char';
-            charSpan.style.display = 'inline-block';
+        if (isDevWord) {
+            // For the "Dev[img]pment" word, walk child nodes directly
+            // (mix of text nodes and an img element)
+            const childNodes = Array.from(word.childNodes);
+            word.innerHTML = ''; // Clear
+            word.style.opacity = 1;
 
-            // Apply SDG colors sequentially (1 to 17) ONLY to the accent word
-            if (word.classList.contains('hero__title-word--accent')) {
-                const sdgNum = (charIndex % 17) + 1;
-                charSpan.style.color = `var(--sdg-${sdgNum})`;
-                charIndex++;
+            childNodes.forEach(node => {
+                if (node.nodeType === Node.TEXT_NODE) {
+                    // Split text node into individual character spans
+                    const chars = node.textContent.split('');
+                    chars.forEach(ch => {
+                        const charSpan = document.createElement('span');
+                        charSpan.textContent = ch;
+                        charSpan.className = 'hero__title-char';
+                        charSpan.style.display = 'inline-block';
+                        // Black color — no SDG coloring on this word
+                        word.appendChild(charSpan);
+                        titleChars.push(charSpan);
+                    });
+                } else if (node.nodeType === Node.ELEMENT_NODE && node.tagName === 'IMG') {
+                    // Re-attach the image and include it in the animation array
+                    node.style.display = 'inline-block';
+                    word.appendChild(node);
+                    titleChars.push(node);
+                }
+            });
+        } else {
+            // Normal words — split by character
+            const text = word.textContent.trim();
+            word.textContent = '';
+            word.style.opacity = 1;
+
+            for (let i = 0; i < text.length; i++) {
+                const charSpan = document.createElement('span');
+                charSpan.textContent = text[i];
+                charSpan.className = 'hero__title-char';
+                charSpan.style.display = 'inline-block';
+                word.appendChild(charSpan);
+                titleChars.push(charSpan);
             }
-
-            word.appendChild(charSpan);
-            titleChars.push(charSpan);
         }
     });
 

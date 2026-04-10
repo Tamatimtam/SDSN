@@ -283,8 +283,22 @@
 }
 
 .hero__title-word--accent {
-    /* Colors applied dynamically via JS per letter */
-    color: var(--accent);
+    color: #000000;
+}
+
+/* SDG Wheel image replacing the "o" in Development */
+.hero__dev-o {
+    display: inline-block;
+    height: 0.62em;
+    /* scales perfectly with the font size */
+    width: auto;
+    vertical-align: middle;
+    margin: 0 0.02em;
+    /* tiny horizontal breathing room */
+    position: relative;
+    top: -0.05em;
+    /* fine-tune vertical alignment */
+    object-fit: contain;
 }
 
 .hero__subtitle {
