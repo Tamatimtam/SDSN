@@ -13,7 +13,7 @@
     display: grid;
     grid-template-columns: 1fr 1.5fr;
     gap: var(--space-xl);
-    padding-bottom: var(--space-2xl);
+    padding-bottom: 10rem;
     /* Increased padding to allow SDG Marquee track to run below elements */
 }
 
