@@ -1,0 +1,186 @@
+/* ===== HERO ===== */
+.hero {
+    position: relative;
+    height: 100vh;
+    min-height: 600px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden;
+}
+
+.hero__video-wrap {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+}
+
+.hero__video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.hero__overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg,
+            rgba(255, 255, 255, 0.4) 0%,
+            rgba(255, 255, 255, 0.6) 50%,
+            var(--bg-primary) 100%);
+}
+
+.hero__content {
+    position: relative;
+    z-index: 1;
+    text-align: center;
+    padding: 0 var(--container-padding);
+    max-width: 1200px;
+}
+
+/* Hero Logo */
+.hero__logo-wrap {
+    display: flex;
+    justify-content: center;
+    margin-bottom: var(--space-sm);
+}
+
+.hero__logo {
+    width: clamp(200px, 28vw, 360px);
+    height: auto;
+    will-change: transform;
+}
+
+/* Hero Tagline */
+.hero__tagline {
+    font-family: var(--font-body);
+    font-size: clamp(0.9rem, 1.5vw, 1.1rem);
+    font-weight: 400;
+    color: var(--text-muted);
+    letter-spacing: 0.05em;
+    margin-bottom: 0.5rem;
+    opacity: 0;
+}
+
+/* Hero Title */
+.hero__title-new {
+    font-family: var(--font-display);
+    font-size: clamp(2.2rem, 5vw, 4.2rem);
+    font-weight: 700;
+    line-height: 1.05;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-md);
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 0 0.3em;
+}
+
+.hero__title-word {
+    display: inline-block;
+    opacity: 0;
+}
+
+.hero__title-word--accent {
+    color: #000000;
+}
+
+/* SDG Wheel image replacing the "o" in Development */
+.hero__dev-o {
+    display: inline-block;
+    height: 0.62em;
+    /* scales perfectly with the font size */
+    width: auto;
+    vertical-align: middle;
+    margin: 0 0.02em;
+    /* tiny horizontal breathing room */
+    position: relative;
+    top: -0.05em;
+    /* fine-tune vertical alignment */
+    object-fit: contain;
+}
+
+.hero__subtitle {
+    font-size: clamp(0.9rem, 1.5vw, 1.15rem);
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin-bottom: var(--space-lg);
+    opacity: 0;
+}
+
+.hero__cta-wrap {
+    opacity: 0;
+}
+
+/* Primary Button */
+.btn-primary {
+    position: relative;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.75em;
+    font-family: var(--font-display);
+    font-size: 1rem;
+    font-weight: 600;
+    padding: 1em 2.5em;
+    border-radius: 100px;
+    overflow: hidden;
+    transition: transform var(--transition-elastic);
+    -webkit-tap-highlight-color: transparent;
+}
+
+.btn-primary:active {
+    transform: scale(0.96);
+}
+
+.btn-primary__bg {
+    position: absolute;
+    inset: 0;
+    background: var(--accent);
+    border-radius: inherit;
+    transition: transform var(--transition-smooth);
+}
+
+.btn-primary__text,
+.btn-primary__arrow {
+    position: relative;
+    z-index: 1;
+    color: var(--bg-primary);
+}
+
+.btn-primary__arrow {
+    transition: transform var(--transition-elastic);
+    font-size: 1.2em;
+}
+
+.btn-primary:hover .btn-primary__bg {
+    transform: scale(1.05);
+}
+
+.btn-primary:hover .btn-primary__arrow {
+    transform: translateY(4px);
+}
+
+/* Scroll Indicator */
+.hero__scroll-indicator {
+    position: absolute;
+    bottom: 2rem;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    opacity: 0;
+}
+
+.scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+    animation: scrollPulse 2s ease-in-out infinite;
+}

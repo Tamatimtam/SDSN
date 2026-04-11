@@ -1,0 +1,210 @@
+/* ===== FOOTER ===== */
+.footer {
+    background: var(--bg-primary);
+    padding-top: var(--space-2xl);
+    position: relative;
+    overflow: hidden;
+}
+
+.footer__inner {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+    display: grid;
+    grid-template-columns: 1fr 1.5fr;
+    gap: var(--space-xl);
+    padding-bottom: var(--space-2xl);
+    /* Increased padding to allow SDG Marquee track to run below elements */
+}
+
+/* Big animated links */
+.footer__big-link {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 4vw, 3.5rem);
+    font-weight: 800;
+    text-transform: uppercase;
+    line-height: 1.1;
+    margin-bottom: 0.3em;
+}
+
+.footer__big-link a {
+    position: relative;
+    display: inline-block;
+    transition: color var(--transition-fast), transform var(--transition-smooth);
+}
+
+.footer__big-link a::after {
+    content: ' →';
+    opacity: 0;
+    transform: translateX(-10px);
+    transition: opacity var(--transition-fast), transform var(--transition-smooth);
+    display: inline-block;
+}
+
+.footer__big-link a:hover {
+    color: var(--accent);
+    transform: translateX(12px);
+}
+
+.footer__big-link a:hover::after {
+    opacity: 1;
+    transform: translateX(0);
+}
+
+/* Quick links */
+.footer__links {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: var(--space-lg);
+}
+
+.footer__links a {
+    font-size: var(--fs-body);
+    color: var(--text-secondary);
+    transition: color var(--transition-fast);
+    width: fit-content;
+}
+
+.footer__links a:hover {
+    color: var(--text-primary);
+}
+
+/* Newsletter */
+.footer__newsletter {
+    margin-bottom: var(--space-lg);
+}
+
+.footer__newsletter p {
+    font-size: var(--fs-small);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-sm);
+    max-width: 400px;
+}
+
+.newsletter-form {
+    display: flex;
+    gap: 0;
+    max-width: 420px;
+}
+
+.newsletter-input {
+    flex: 1;
+    padding: 0.8em 1.2em;
+    background: var(--bg-elevated);
+    color: var(--text-primary);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-sm) 0 0 var(--radius-sm);
+    font-size: 0.9rem;
+    transition: border-color var(--transition-fast);
+}
+
+.newsletter-input::placeholder {
+    color: var(--text-muted);
+}
+
+.newsletter-input:focus {
+    border-color: var(--accent);
+}
+
+.newsletter-btn {
+    padding: 0.8em 1.5em;
+    background: var(--text-primary);
+    color: var(--bg-primary);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    border-radius: 0 var(--radius-sm) var(--radius-sm) 0;
+    transition: background var(--transition-fast), transform var(--transition-elastic);
+}
+
+.newsletter-btn:hover {
+    background: var(--accent);
+    transform: scale(1.02);
+}
+
+/* Social Icons */
+.footer__socials {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+}
+
+.footer__socials>span {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    color: var(--text-muted);
+}
+
+.social-icon {
+    width: 36px;
+    height: 36px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-secondary);
+    transition: color var(--transition-fast), transform var(--transition-elastic);
+}
+
+.social-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.social-icon:hover {
+    color: var(--accent);
+    transform: scale(1.2);
+}
+
+/* SDG Physics Canvas (background animation) */
+.footer__physics-canvas {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    pointer-events: none;
+    /* Let clicks pass through to links by default */
+    z-index: 1;
+    /* Below text (z-index 2), above background */
+}
+
+/* Ensure footer text stays above canvas */
+.footer__inner,
+.footer__bottom {
+    position: relative;
+    z-index: 2;
+    pointer-events: auto;
+    /* Re-enable clicks for text content */
+}
+
+.canvas-target {
+    width: 100%;
+    height: 100%;
+    pointer-events: auto;
+    /* Enable mouse interaction for the canvas itself */
+}
+
+/* Footer Bottom Bar */
+.footer__bottom {
+    border-top: 1px solid var(--border-subtle);
+    padding: var(--space-md) var(--container-padding);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    max-width: var(--container-max);
+    margin: 0 auto;
+    font-size: 0.8rem;
+    color: var(--text-muted);
+}
+
+.footer__bottom a {
+    color: var(--accent);
+    transition: opacity var(--transition-fast);
+}
+
+.footer__bottom a:hover {
+    opacity: 0.7;
+}

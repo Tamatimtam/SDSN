@@ -1,0 +1,195 @@
+/* ===== HEADER ===== */
+.header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+    padding: 0 var(--container-padding);
+    background: transparent;
+    border-bottom: 1px solid transparent;
+    transition: transform var(--transition-smooth), background var(--transition-fast), border-color var(--transition-fast), backdrop-filter var(--transition-fast);
+}
+
+.header.hidden {
+    transform: translateY(-100%);
+}
+
+.header.scrolled {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border-bottom: 1px solid var(--glass-border);
+}
+
+.header__inner {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 80px;
+}
+
+.header__logo {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.header__logo-img {
+    height: 64px;
+    width: auto;
+    object-fit: contain;
+    transition: height var(--transition-smooth), opacity var(--transition-fast);
+}
+
+.header.scrolled .header__logo-img {
+    height: 48px;
+}
+
+.header__nav {
+    display: flex;
+    gap: 0;
+    align-items: center;
+}
+
+.nav-item {
+    position: relative;
+}
+
+.nav-link {
+    font-family: var(--font-display);
+    font-size: 0.9rem;
+    font-weight: 500;
+    letter-spacing: 0.02em;
+    color: var(--text-secondary);
+    position: relative;
+    transition: color var(--transition-fast);
+    padding: 1.5rem 1.25rem;
+    display: block;
+}
+
+.nav-link::after {
+    content: '';
+    position: absolute;
+    bottom: 1.2rem;
+    left: 1.25rem;
+    right: 1.25rem;
+    width: auto;
+    height: 2px;
+    background: var(--accent);
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform var(--transition-smooth);
+}
+
+.nav-link:hover {
+    color: var(--text-primary);
+}
+
+.nav-link:hover::after {
+    transform: scaleX(1);
+}
+
+/* --- Dropdown Mega Menu --- */
+.nav-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    padding-top: 0.5rem;
+    pointer-events: none;
+    opacity: 0;
+    visibility: hidden;
+    z-index: 100;
+}
+
+.nav-dropdown__inner {
+    background: var(--glass-bg);
+    backdrop-filter: blur(var(--glass-blur));
+    -webkit-backdrop-filter: blur(var(--glass-blur));
+    border: 1px solid var(--glass-border);
+    border-radius: var(--radius-md);
+    padding: 1.5rem;
+    display: flex;
+    gap: 2rem;
+    min-width: 320px;
+    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.1), 0 1px 3px rgba(0, 0, 0, 0.05);
+    transform-origin: top center;
+}
+
+.nav-dropdown__col {
+    min-width: 140px;
+}
+
+.nav-dropdown__col--wide {
+    min-width: 200px;
+}
+
+.nav-dropdown__heading {
+    font-family: var(--font-display);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    margin-bottom: 0.75rem;
+    padding-bottom: 0.5rem;
+    border-bottom: 2px solid var(--border-subtle);
+}
+
+.nav-dropdown__link {
+    display: block;
+    font-family: var(--font-body);
+    font-size: 0.875rem;
+    font-weight: 500;
+    color: var(--text-secondary);
+    padding: 0.45rem 0;
+    transition: color var(--transition-fast), transform var(--transition-fast);
+    position: relative;
+}
+
+.nav-dropdown__link:hover {
+    color: var(--accent);
+    transform: translateX(6px);
+}
+
+.nav-dropdown__link::before {
+    content: '';
+    position: absolute;
+    left: -10px;
+    top: 50%;
+    transform: translateY(-50%) scale(0);
+    width: 4px;
+    height: 4px;
+    border-radius: 50%;
+    background: var(--accent);
+    transition: transform var(--transition-fast);
+}
+
+.nav-dropdown__link:hover::before {
+    transform: translateY(-50%) scale(1);
+}
+
+/* Dropdown active state controlled by JS/GSAP */
+.nav-item.dropdown-active .nav-dropdown {
+    pointer-events: auto;
+    visibility: visible;
+}
+
+.header__cta {
+    font-family: var(--font-display);
+    font-size: 0.85rem;
+    font-weight: 600;
+    padding: 0.6em 1.5em;
+    background: var(--accent);
+    color: var(--bg-primary);
+    border-radius: 100px;
+    transition: transform var(--transition-elastic), box-shadow var(--transition-fast);
+}
+
+.header__cta:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 30px var(--accent-glow);
+}

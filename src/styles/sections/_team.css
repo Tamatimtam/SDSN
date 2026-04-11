@@ -1,0 +1,88 @@
+/* ===== TEAM ===== */
+.team {
+    padding: var(--space-2xl) 0;
+}
+
+.team__container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+}
+
+.team__header {
+    margin-bottom: var(--space-lg);
+}
+
+.team__title {
+    font-family: var(--font-display);
+    font-size: var(--fs-h2);
+    font-weight: 700;
+    letter-spacing: -0.02em;
+}
+
+.team__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: var(--space-md);
+}
+
+/* Team Card */
+.team-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-lg);
+    padding: var(--space-md);
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    transition: transform var(--transition-smooth), border-color var(--transition-fast), box-shadow var(--transition-fast);
+}
+
+.team-card:hover {
+    transform: translateY(-8px);
+    border-color: var(--border-hover);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+}
+
+.team-card__avatar-wrap {
+    width: 120px;
+    height: 120px;
+    border-radius: 50%;
+    overflow: hidden;
+    margin: 0 auto var(--space-md);
+    border: 3px solid var(--border-subtle);
+    transition: border-color var(--transition-fast);
+}
+
+.team-card:hover .team-card__avatar-wrap {
+    border-color: var(--accent);
+}
+
+.team-card__avatar {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform var(--transition-smooth);
+}
+
+.team-card:hover .team-card__avatar {
+    transform: scale(1.1);
+}
+
+.team-card__name {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    font-weight: 700;
+    margin-bottom: 0.25rem;
+}
+
+.team-card__role {
+    font-size: var(--fs-small);
+    color: var(--accent);
+    font-weight: 500;
+}
+
+.team-card__org {
+    font-size: 0.8rem;
+    color: var(--text-muted);
+    margin-top: 0.25rem;
+}

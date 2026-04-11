@@ -1,0 +1,119 @@
+/* ===== ABOUT ===== */
+.about {
+    padding: var(--space-2xl) 0;
+    position: relative;
+}
+
+.about__container {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 0 var(--container-padding);
+}
+
+.about__grid {
+    display: grid;
+    grid-template-columns: 1.2fr 1fr;
+    gap: var(--space-xl);
+    align-items: start;
+    margin-top: var(--space-lg);
+}
+
+.about__heading {
+    font-family: var(--font-display);
+    font-size: var(--fs-h2);
+    font-weight: 700;
+    line-height: 1.15;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--space-md);
+}
+
+.about__heading em {
+    font-style: normal;
+    /* Colored per letter via JS */
+}
+
+.about__desc {
+    font-size: var(--fs-body);
+    color: var(--text-secondary);
+    margin-bottom: var(--space-sm);
+    line-height: 1.8;
+}
+
+/* Stats Column */
+.about__stats-col {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-sm);
+}
+
+.stat-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-subtle);
+    border-radius: var(--radius-md);
+    padding: var(--space-md);
+    text-align: center;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.03);
+    transition: border-color var(--transition-fast), transform var(--transition-smooth), box-shadow var(--transition-smooth);
+}
+
+.stat-card:hover {
+    border-color: var(--border-hover);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.stat-card__number {
+    display: block;
+    font-family: var(--font-display);
+    font-size: 3rem;
+    font-weight: 700;
+    color: var(--accent);
+    line-height: 1;
+    margin-bottom: 0.25em;
+}
+
+.stat-card__label {
+    font-size: var(--fs-small);
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
+}
+
+/* Host Logos */
+.about__hosts {
+    margin-top: var(--space-xl);
+    padding-top: var(--space-lg);
+    border-top: 1px solid var(--border-subtle);
+}
+
+.hosts-label {
+    font-size: var(--fs-small);
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.15em;
+    display: block;
+    margin-bottom: var(--space-sm);
+}
+
+.hosts-logos {
+    display: flex;
+    align-items: center;
+    gap: var(--space-md);
+    flex-wrap: wrap;
+}
+
+.host-link {
+    font-family: var(--font-display);
+    font-size: var(--fs-h3);
+    font-weight: 600;
+    transition: color var(--transition-fast);
+}
+
+.host-link:hover {
+    color: var(--accent);
+}
+
+.hosts-divider {
+    color: var(--text-muted);
+    font-size: 1.2rem;
+}
