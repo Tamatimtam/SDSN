@@ -101,6 +101,7 @@ async function init() {
     // Abort if GSAP didn't load
     if (typeof gsap === 'undefined') {
         console.error('[SDSN Debug] ❌ Cannot continue without GSAP');
+        document.body.classList.remove('is-loading');
         return;
     }
 
@@ -143,18 +144,21 @@ async function init() {
         duration: 0.8
     });
 
-    // Init all sections with error isolation
-    safeInit('Header', initHeader);
-    safeInit('Hero', initHero);
-    safeInit('About', initAbout);
-    safeInit('SDGs', initSDGs);
-    safeInit('News', initNews);
-    safeInit('Events', initEvents);
-    safeInit('Team', initTeam);
-    safeInit('Footer', initFooter);
-    safeInit('FooterPhysics', initFooterPhysics);
-
     safeInit('RandomSDGColors', assignRandomSDGColors);
+
+    const startAnimations = () => {
+        // Init all sections with error isolation AFTER preloader finishes
+        safeInit('Header', initHeader);
+        safeInit('Hero', initHero);
+        safeInit('About', initAbout);
+        safeInit('SDGs', initSDGs);
+        safeInit('News', initNews);
+        safeInit('Events', initEvents);
+        safeInit('Team', initTeam);
+        safeInit('Footer', initFooter);
+        safeInit('FooterPhysics', initFooterPhysics);
+        ScrollTrigger.refresh();
+    };
 
     // Smooth anchor scrolling — use Lenis if available, fallback to GSAP scrollTo
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -211,10 +215,25 @@ async function init() {
         });
     }
 
-    // Refresh ScrollTrigger after all content is loaded
+    // Hide preloader first, then start animations to prevent lag
     window.addEventListener('load', () => {
-        ScrollTrigger.refresh();
-        console.log('[SDSN Debug] ✅ ScrollTrigger refreshed on load');
+        const preloader = document.getElementById('preloader');
+        if (preloader) {
+            gsap.to(preloader, {
+                opacity: 0,
+                duration: 0.8,
+                ease: "power2.inOut",
+                onComplete: () => {
+                    preloader.remove();
+                    document.body.classList.remove('is-loading');
+                    startAnimations();
+                    console.log('[SDSN Debug] ✅ Preloader removed & Animations started');
+                }
+            });
+        } else {
+            document.body.classList.remove('is-loading');
+            startAnimations();
+        }
     });
 
     // Handle resize
