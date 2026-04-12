@@ -259,6 +259,30 @@
         align-items: flex-start;
     }
 
+    .hosts-logos--awwwards {
+        flex-direction: column;
+        height: 700px;
+    }
+
+    .hosts-logos--awwwards .host-link-epic {
+        width: 100%;
+    }
+
+    .hosts-logos--awwwards .host-link-epic:hover .epic-logo-wrapper,
+    .hosts-logos--awwwards .host-link-epic.is-tapped .epic-logo-wrapper {
+        top: 2rem;
+        left: 50%;
+        transform: translate3d(-50%, 0, 0) scale(0.9);
+    }
+
+    .hosts-logos--awwwards .host-link-epic:hover .epic-text-content,
+    .hosts-logos--awwwards .host-link-epic.is-tapped .epic-text-content {
+        text-align: center;
+        align-items: center;
+        display: flex;
+        flex-direction: column;
+    }
+
     .hosts-divider {
         display: none;
     }

@@ -215,6 +215,29 @@ async function init() {
         });
     }
 
+    // === Hosted By Mobile Tap Interaction ===
+    const hostLinks = document.querySelectorAll('.host-link-epic');
+    hostLinks.forEach(link => {
+        link.addEventListener('click', function (e) {
+            // Intercept only if it's a touch device/interaction
+            if (window.matchMedia("(hover: none)").matches || navigator.maxTouchPoints > 0 || e.pointerType === 'touch') {
+                if (!this.classList.contains('is-tapped')) {
+                    e.preventDefault(); // First tap stops navigation
+                    hostLinks.forEach(l => l.classList.remove('is-tapped')); // Reset others
+                    this.classList.add('is-tapped'); // Expand this one
+                }
+                // Second tap will bypass this and natively navigate
+            }
+        });
+    });
+
+    // Tap outside collapses expanded cards
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.hosts-logos--awwwards')) {
+            hostLinks.forEach(l => l.classList.remove('is-tapped'));
+        }
+    });
+
     // Hide preloader first, then start animations to prevent lag
     window.addEventListener('load', () => {
         const preloader = document.getElementById('preloader');

@@ -15,12 +15,12 @@
    └── _mobile.css   → hamburger, mobile nav, back-to-top, @media
    ===================================================== */
 
-@import './sections/_header.css';
-@import './sections/_hero.css';
-@import './sections/_about.css';
-@import './sections/_sdgs.css';
-@import './sections/_news.css';
-@import './sections/_events.css';
-@import './sections/_team.css';
-@import './sections/_footer.css';
-@import './sections/_mobile.css';
+@import './sections/_header.css?v=5';
+@import './sections/_hero.css?v=5';
+@import './sections/_about.css?v=5';
+@import './sections/_sdgs.css?v=5';
+@import './sections/_news.css?v=5';
+@import './sections/_events.css?v=5';
+@import './sections/_team.css?v=5';
+@import './sections/_footer.css?v=5';
+@import './sections/_mobile.css?v=5';
