@@ -95,25 +95,153 @@
     margin-bottom: var(--space-sm);
 }
 
-.hosts-logos {
+.hosts-logos--awwwards {
+    display: flex;
+    align-items: stretch;
+    height: 480px;
+    width: 100%;
+    gap: var(--space-xs);
+    border-radius: var(--radius-lg, 24px);
+    overflow: hidden;
+}
+
+.host-link-epic {
+    flex: 1;
+    position: relative;
+    overflow: hidden;
+    text-decoration: none;
+    transition: flex 1s cubic-bezier(0.19, 1, 0.22, 1);
+    background: var(--bg-card, #111);
+}
+
+.epic-bg {
+    position: absolute;
+    inset: -50px;
+    background-size: cover;
+    background-position: center;
+    z-index: 1;
+    filter: grayscale(100%) contrast(1.1) brightness(0.6);
+    opacity: 0.6;
+    transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
+    transform: scale(1.1);
+}
+
+.host-link-epic--ui .epic-bg {
+    background-image: url('https://images.unsplash.com/photo-1498243691581-b145c3f54a5a?auto=format&fit=crop&q=80&w=1200');
+}
+
+.host-link-epic--uid .epic-bg {
+    background-image: url('https://images.unsplash.com/photo-1497366216548-37526070297c?auto=format&fit=crop&q=80&w=1200');
+}
+
+.epic-overlay {
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to top, rgba(0, 0, 0, 0.95) 0%, rgba(0, 0, 0, 0.4) 50%, rgba(0, 0, 0, 0.1) 100%);
+    z-index: 2;
+    transition: opacity 1s ease;
+    opacity: 0.9;
+}
+
+.epic-content {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    padding: var(--space-xl, 3rem);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.epic-logo-wrapper {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(1.5);
+    transition: all 1s cubic-bezier(0.19, 1, 0.22, 1);
     display: flex;
     align-items: center;
-    gap: var(--space-md);
-    flex-wrap: wrap;
+    justify-content: center;
 }
 
-.host-link {
-    font-family: var(--font-display);
-    font-size: var(--fs-h3);
+.epic-logo {
+    max-height: 80px;
+    max-width: 80%;
+    object-fit: contain;
+    filter: brightness(0) invert(1);
+}
+
+.epic-logo-text {
+    font-family: var(--font-display, inherit);
+    font-size: 4rem;
+    font-weight: 900;
+    color: white;
+    letter-spacing: -0.05em;
+    margin: 0;
+}
+
+.epic-text-content {
+    color: white;
+    transform: translateY(40px);
+    opacity: 0;
+    transition: all 0.8s cubic-bezier(0.19, 1, 0.22, 1);
+    max-width: 450px;
+    pointer-events: none;
+}
+
+.epic-title {
+    font-family: var(--font-display, inherit);
+    font-size: clamp(1.8rem, 3vw, 2.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    margin-bottom: var(--space-xs, 0.5rem);
+    letter-spacing: -0.02em;
+    color: white;
+}
+
+.epic-desc {
+    font-size: var(--fs-body, 1.1rem);
+    opacity: 0.85;
+    margin-bottom: var(--space-md, 1.5rem);
+    line-height: 1.6;
+    color: #e5e5e5;
+}
+
+.epic-explore {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
     font-weight: 600;
-    transition: color var(--transition-fast);
-}
-
-.host-link:hover {
+    font-size: var(--fs-small, 0.9rem);
+    text-transform: uppercase;
+    letter-spacing: 0.1em;
     color: var(--accent);
 }
 
-.hosts-divider {
-    color: var(--text-muted);
-    font-size: 1.2rem;
+/* Hover States (The VOOOOSH) */
+.host-link-epic:hover {
+    flex: 4;
+}
+
+.host-link-epic:hover .epic-bg {
+    filter: grayscale(0%) contrast(1) brightness(0.85);
+    opacity: 1;
+    transform: scale(1);
+}
+
+.host-link-epic:hover .epic-overlay {
+    opacity: 0.8;
+}
+
+.host-link-epic:hover .epic-logo-wrapper {
+    top: var(--space-xl, 3rem);
+    left: var(--space-xl, 3rem);
+    transform: translate(0, 0) scale(1);
+}
+
+.host-link-epic:hover .epic-text-content {
+    transform: translateY(0);
+    opacity: 1;
+    transition-delay: 0.1s;
+    pointer-events: auto;
 }
