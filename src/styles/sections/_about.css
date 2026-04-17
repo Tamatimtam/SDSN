@@ -133,12 +133,12 @@
 }
 
 .host-link-epic--ui .epic-bg {
-    background-image: url('https://sci-ui.id/wp-content/uploads/2025/04/Landmark-FMIPA-UI_1-scaled.jpg');
+    background-image: url('../../assets/UID-UI.jpg');
     background-position: center bottom;
 }
 
 .host-link-epic--uid .epic-bg {
-    background-image: url('https://nos.wjv-1.neo.id/uid/web/about/F143NEbOLSVRsDupGOZz73DEbvYJBhEzN2QkCBxa.jpg?X-Amz-Content-Sha256=UNSIGNED-PAYLOAD&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=70800c85d4e2d3b37308%2F20260412%2Fidn%2Fs3%2Faws4_request&X-Amz-Date=20260412T061637Z&X-Amz-SignedHeaders=host&X-Amz-Expires=3600&X-Amz-Signature=f0d2d2832e2c9a88bb9a2496ae22d40667c78a2c4c87376b3aabe7b1ccca2e1a');
+    background-image: url('../../assets/UID-BG.jpg');
 }
 
 .epic-overlay {

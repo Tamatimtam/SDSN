@@ -46,8 +46,8 @@
 
 /* SDG Card */
 .sdg-card {
-    flex: 0 0 320px;
-    height: 440px;
+    flex: 0 0 224px;
+    height: 308px;
     background: var(--bg-card);
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-lg);
@@ -65,7 +65,7 @@
 
 .sdg-card__image {
     width: 100%;
-    height: 200px;
+    height: 140px;
     object-fit: contain;
     padding: var(--space-sm);
     box-sizing: border-box;
@@ -73,7 +73,7 @@
 
 .sdg-card__image-wrap {
     overflow: hidden;
-    height: 200px;
+    height: 140px;
 }
 
 .sdg-card__body {
@@ -85,7 +85,7 @@
 
 .sdg-card__number {
     font-family: var(--font-display);
-    font-size: 0.8rem;
+    font-size: 0.6rem;
     font-weight: 700;
     letter-spacing: 0.1em;
     text-transform: uppercase;
@@ -94,13 +94,13 @@
 
 .sdg-card__title {
     font-family: var(--font-display);
-    font-size: 1.25rem;
+    font-size: 0.875rem;
     font-weight: 700;
     line-height: 1.2;
 }
 
 .sdg-card__desc {
-    font-size: var(--fs-small);
+    font-size: 0.75rem;
     color: var(--text-secondary);
     line-height: 1.6;
 }
