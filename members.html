@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Member Institutions — SDSN Indonesia</title>
+    <meta name="description"
+        content="Explore SDSN Indonesia's network of 12 member institutions — universities and NGOs across the archipelago driving the Sustainable Development Goals." />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="./favicon.ico" />
+    <link rel="icon" type="image/png" sizes="32x32" href="./favicon-32x32.png" />
+    <link rel="apple-touch-icon" sizes="180x180" href="./apple-touch-icon.png" />
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Space+Grotesk:wght@400;500;600;700;800&display=swap"
+        rel="stylesheet" />
+
+    <!-- GSAP -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+
+    <!-- Lenis Smooth Scroll -->
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js" defer></script>
+
+    <!-- Leaflet JS & CSS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" crossorigin="" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" crossorigin="" defer></script>
+
+    <!-- Phosphor Icons -->
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="./src/styles/main.css?v=7" />
+    <link rel="stylesheet" href="./src/styles/sections/_members.css?v=7" />
+</head>
+
+<body class="is-loading members-page">
+
+    <!-- ==================== PRELOADER ==================== -->
+    <div id="preloader" class="preloader">
+        <div class="preloader__inner">
+            <img src="./src/assets/logo.png" alt="SDSN Indonesia" class="preloader__logo" />
+            <div class="preloader__spinner"></div>
+        </div>
+    </div>
+
+    <!-- ==================== SDG RAINBOW BAR ==================== -->
+    <div class="members-sdg-bar" id="sdg-bar"></div>
+
+    <!-- ==================== HEADER ==================== -->
+    <header class="members-header">
+        <div class="members-header__inner">
+            <a href="./index.html" class="members-header__logo">
+                <img src="./src/assets/logo.png" alt="SDSN Indonesia" />
+                <span class="members-header__logo-text">SDSN Indonesia</span>
+            </a>
+            <a href="./index.html" class="members-header__back">
+                <i class="ph ph-arrow-left"></i>
+                Back to Home
+            </a>
+        </div>
+    </header>
+
+    <!-- ==================== HERO ==================== -->
+    <section class="members-hero">
+        <div class="members-hero__content">
+            <span class="members-hero__tag">
+                <i class="ph-bold ph-network"></i> The Network
+            </span>
+            <h1 class="members-hero__title">
+                <span class="members-hero__title-word">Member</span><br />
+                <span class="members-hero__title-word members-hero__title-accent">Institutions</span>
+            </h1>
+            <p class="members-hero__subtitle">
+                United in driving sustainable solutions across the Indonesian archipelago. Discover our member
+                universities and NGO partners working from Aceh to Kalimantan.
+            </p>
+            <div class="members-hero__scroll">
+                <span>Explore Network</span>
+                <div class="members-hero__scroll-line"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== MAP SECTION ==================== -->
+    <section class="members-map-section">
+        <div class="members-map__header">
+            <h2 class="members-map__title">Our Footprint</h2>
+            <p class="members-map__subtitle">Driving the 2030 Agenda in communities across 9+ cities nationwide.</p>
+        </div>
+        <div id="members-map"></div>
+    </section>
+
+    <!-- ==================== STATS BAR ==================== -->
+    <section class="members-stats">
+        <div class="members-stats__inner" id="stats-grid">
+            <!-- Stats injected by JS -->
+        </div>
+    </section>
+
+    <!-- ==================== FILTER BAR ==================== -->
+    <div class="members-filter">
+        <div class="members-filter__inner">
+            <div class="members-filter__pills">
+                <button class="members-filter__pill active" data-filter="all">All Members</button>
+                <button class="members-filter__pill" data-filter="University">
+                    <i class="ph-bold ph-graduation-cap"></i> Universities
+                </button>
+                <button class="members-filter__pill" data-filter="NGO">
+                    <i class="ph-bold ph-hand-heart"></i> NGOs
+                </button>
+            </div>
+            <span class="members-filter__count">
+                Showing <strong>12</strong> institutions
+            </span>
+        </div>
+    </div>
+
+    <!-- ==================== CARDS GRID ==================== -->
+    <section class="members-grid-section">
+        <div class="members-grid__container">
+            <!-- The EPIC EXPAND vertical stack -->
+            <div class="members-grid" id="members-grid">
+                <!-- Cards injected by JS -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ==================== CTA ==================== -->
+    <section class="members-cta">
+        <div class="members-cta__inner">
+            <h2 class="members-cta__title">Want to Join Our Network?</h2>
+            <p class="members-cta__text">
+                SDSN Indonesia welcomes knowledge institutions and organizations committed to
+                advancing the Sustainable Development Goals. Connect with researchers and experts nationwide.
+            </p>
+            <a href="./index.html#footer" class="members-cta__btn">
+                Apply for Membership <i class="ph ph-arrow-right"></i>
+            </a>
+        </div>
+    </section>
+
+    <!-- ==================== FOOTER ==================== -->
+    <footer class="members-footer">
+        <p>&copy; 2026 <a href="./index.html">SDSN Indonesia</a> — Sustainable Development Solutions Network</p>
+    </footer>
+
+    <!-- Back to Top Button -->
+    <button id="back-to-top" class="btn-back-to-top" aria-label="Back to top">
+        <i class="ph ph-arrow-up"></i>
+    </button>
+
+    <!-- Main JS -->
+    <script type="module" src="./src/members-main.js?v=7"></script>
+</body>
+
+</html>
