@@ -25,7 +25,7 @@
 
     <style>
         :root {
-            --sdg-color: #E5243B;
+            --sdg-color: #E5233D;
         }
 
         html,
@@ -67,11 +67,20 @@
         </header>
 
         <section class="goal-hero">
+            <!-- Watermark sekarang digeser ke kiri via CSS -->
             <div class="goal-hero__watermark">01</div>
-            <div class="goal-hero__content">
-                <span class="goal-hero__label">GOAL 01</span>
-                <h1 class="goal-hero__title" id="inject-title"></h1>
-                <p class="goal-hero__desc" id="inject-desc"></p>
+
+            <div class="goal-hero__inner">
+                <div class="goal-hero__content">
+                    <span class="goal-hero__label">GOAL 01</span>
+                    <h1 class="goal-hero__title" id="inject-title"></h1>
+                    <p class="goal-hero__desc" id="inject-desc"></p>
+                </div>
+
+                <!-- Logo SDG Besar Rata Kanan -->
+                <div class="goal-hero__logo-wrap">
+                    <img id="inject-logo" src="" alt="SDG Logo" class="goal-hero__logo" />
+                </div>
             </div>
         </section>
 

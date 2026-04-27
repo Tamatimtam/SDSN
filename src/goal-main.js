@@ -141,6 +141,12 @@ async function initGoal() {
             document.getElementById('inject-desc').textContent = data.description;
             document.getElementById('inject-pulse').textContent = data.pulseText;
 
+            // Inject Path Logo secara dinamis
+            const logoImg = document.getElementById('inject-logo');
+            if (logoImg) {
+                logoImg.src = `../src/assets/SDGs Logo/E SDG Icons WEB/E-WEB-Goal-${goalId}.png`;
+            }
+
             const bentoHTML = data.pulseMetrics.map(item => `
                 <div class="pulse-card">
                     <div class="pulse-card__label">${item.label}</div>
@@ -274,9 +280,10 @@ async function initGoal() {
         if (label && titleChars.length > 0 && desc) {
             tl.fromTo(label, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: 'back.out(2)' }, "-=0.8")
                 .fromTo(titleChars, { y: '100%' }, { y: '0%', duration: 0.8, stagger: 0.02, ease: 'expo.out' }, "-=0.7")
-                .fromTo(desc, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: 'back.out(2)' }, "-=0.6");
+                .fromTo(desc, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: 'back.out(2)' }, "-=0.6")
+                // Animasi Logo SDG muncul dari kanan
+                .fromTo('.goal-hero__logo-wrap', { opacity: 0, x: 50, scale: 0.8 }, { opacity: 1, x: 0, scale: 1, duration: 1, ease: 'back.out(1.5)' }, "-=1");
         }
-
         document.querySelectorAll('.bento-box').forEach((box, i) => {
             gsap.fromTo(box, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.8, delay: i * 0.1, ease: 'back.out(2)', scrollTrigger: { trigger: box, start: 'top 85%' } });
         });
