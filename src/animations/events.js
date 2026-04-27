@@ -7,19 +7,28 @@ export function initEvents() {
     if (!timeline || !section) return;
 
     // Inject event cards
-    timeline.innerHTML = events.map((event, i) => `
-    <article class="event-card" data-index="${i}">
-      <div class="event-card__image-wrap">
-        <img class="event-card__image" src="${event.image}" alt="${event.title}" loading="lazy" />
-      </div>
-      <div class="event-card__body">
-        <span class="event-card__date">${event.date}</span>
+    timeline.innerHTML = events.map((event, i) => {
+      // Loop through SDG 1 to 17 colors for theme mixture
+      const sdgColorVar = `var(--sdg-${(i % 17) + 1})`;
+      
+      return `
+    <a href="#" class="event-card" data-index="${i}" style="--event-color: ${sdgColorVar};">
+      <div class="event-card__top">
+        <div class="event-card__date" style="color: var(--event-color);">${event.date}</div>
         <h3 class="event-card__title">${event.title}</h3>
         <span class="event-card__location">${event.location}</span>
-        <p class="event-card__desc">${event.description}</p>
       </div>
-    </article>
-  `).join('');
+      <div class="event-card__expand">
+        <div class="event-card__expand-inner">
+          <div class="event-card__image-wrap">
+            <img class="event-card__image" src="${event.image}" alt="${event.title}" loading="lazy" />
+          </div>
+          <p class="event-card__desc">${event.description}</p>
+        </div>
+      </div>
+    </a>
+  `;
+    }).join('');
 
     // Reveal header
     const reveals = section.querySelectorAll('.events__header [data-reveal]');
