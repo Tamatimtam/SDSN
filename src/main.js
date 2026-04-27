@@ -5,6 +5,7 @@ import { initAbout } from './animations/about.js';
 import { initSDGs } from './animations/sdgs.js';
 import { initNews } from './animations/news.js';
 import { initEvents } from './animations/events.js';
+import { initTestimonials } from './animations/testimonials.js';
 import { initTeam } from './animations/team.js';
 import { initFooter } from './animations/footer.js';
 import { initFooterPhysics } from './animations/footer-physics.js';
@@ -154,6 +155,7 @@ async function init() {
         safeInit('SDGs', initSDGs);
         safeInit('News', initNews);
         safeInit('Events', initEvents);
+        safeInit('Testimonials', initTestimonials);
         safeInit('Team', initTeam);
         safeInit('Footer', initFooter);
         safeInit('FooterPhysics', initFooterPhysics);
