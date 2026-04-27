@@ -232,9 +232,11 @@
 .target-card {
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-sm);
-    /* margin-bottom dihapus karena jarak sudah diatur oleh 'gap' pada grid */
     overflow: hidden;
     background: var(--bg-primary);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
 }
 
 .target-card__header {
@@ -242,6 +244,8 @@
     padding: 1.5rem;
     gap: 1.5rem;
     align-items: flex-start;
+    flex-grow: 1;
+    /* Mendorong tombol accordion selalu nempel di bawah jika header membesar */
 }
 
 .target-card__badge {

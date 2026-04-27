@@ -1,3 +1,5 @@
+// File: SDSN/src/goal-main.js
+
 function waitForLibs() {
     return new Promise((resolve) => {
         const check = () => {
@@ -132,7 +134,7 @@ async function initGoal() {
     const goalId = document.body.getAttribute('data-goal');
     if (goalId) {
         try {
-            const module = await import(`./data/goals/goal-${goalId}.js`);
+            const module = await import(`../src/data/goals/goal-${goalId}.js`);
             const data = module.goalData;
 
             document.getElementById('inject-title').textContent = data.title;
@@ -170,6 +172,38 @@ async function initGoal() {
                 </div>
             `).join('');
             document.getElementById('inject-targets').innerHTML = targetsHTML;
+
+            // FUNGSI BARU: Menyamakan tinggi semua Header Target Card
+            const syncHeaderHeights = () => {
+                const headers = document.querySelectorAll('.target-card__header');
+                if (!headers.length) return;
+
+                // Reset dulu (wajib agar bisa hitung ulang saat layar mengecil/membesar)
+                headers.forEach(h => h.style.minHeight = 'auto');
+
+                // Cari yang paling tinggi
+                let maxHeight = 0;
+                headers.forEach(h => {
+                    if (h.offsetHeight > maxHeight) maxHeight = h.offsetHeight;
+                });
+
+                // Terapkan tinggi maksimal ke semua header
+                headers.forEach(h => {
+                    h.style.minHeight = `${maxHeight}px`;
+                });
+            };
+
+            // Jalankan fungsi setelah DOM di-render
+            requestAnimationFrame(() => {
+                syncHeaderHeights();
+            });
+
+            // Delay sedikit untuk resize window agar tidak terjadi lag saat merubah ukuran layar
+            let resizeTimer;
+            window.addEventListener('resize', () => {
+                clearTimeout(resizeTimer);
+                resizeTimer = setTimeout(syncHeaderHeights, 150);
+            });
 
         } catch (err) {
             console.error("Gagal load data goal:", err);
