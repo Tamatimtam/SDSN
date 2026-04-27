@@ -97,7 +97,9 @@ export function initSDGs() {
                 // Ambil data spesifik dari kartu yang diklik
                 const sdgNum = card.getAttribute('data-sdg');
                 const sdgColor = card.getAttribute('data-color');
-                const targetUrl = `goal-${sdgNum}.html`;
+
+                // Ubah routing agar merujuk ke folder goals/
+                const targetUrl = `./goals/${sdgNum}.html`;
 
                 // 1. Taktil Feedback: Kartu ditekan ke dalam
                 gsap.to(card, {

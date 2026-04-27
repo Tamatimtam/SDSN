@@ -19,16 +19,15 @@
     <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js" defer></script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
-    <!-- Styles -->
-    <link rel="stylesheet" href="./src/styles/main.css" />
-    <link rel="stylesheet" href="./src/styles/sections.css" />
+    <!-- Styles (Perhatikan perubahan path menjadi ../ ) -->
+    <link rel="stylesheet" href="../src/styles/main.css" />
+    <link rel="stylesheet" href="../src/styles/sections.css" />
 
     <style>
         :root {
             --sdg-color: #E5243B;
         }
 
-        /* CSS Pengaman dihapus agar tidak bentrok dengan wrapper target Lenis */
         html,
         body {
             background-color: var(--sdg-color);
@@ -45,7 +44,6 @@
             transform: translateY(0%);
             will-change: transform;
             pointer-events: none;
-            /* Penting banget biar klik & scroll tembus */
         }
 
         .goal-page-wrapper {
@@ -62,8 +60,9 @@
 
     <div class="goal-page-wrapper" id="page-wrapper">
         <header class="goal-header">
-            <a href="index.html" class="goal-header__back"><i class="ph-bold ph-arrow-left"></i> Back to Goals</a>
-            <img src="./src/assets/logo.png" alt="SDSN Logo"
+            <!-- Link Back menuju index.html yang ada di luar folder -->
+            <a href="../index.html" class="goal-header__back"><i class="ph-bold ph-arrow-left"></i> Back to Goals</a>
+            <img src="../src/assets/logo.png" alt="SDSN Logo"
                 style="height: 36px; filter: grayscale(1) invert(1); opacity: 0.5;" />
         </header>
 
@@ -71,7 +70,6 @@
             <div class="goal-hero__watermark">01</div>
             <div class="goal-hero__content">
                 <span class="goal-hero__label">GOAL 01</span>
-                <!-- ID ditambah buat tempat inject JS -->
                 <h1 class="goal-hero__title" id="inject-title"></h1>
                 <p class="goal-hero__desc" id="inject-desc"></p>
             </div>
@@ -83,12 +81,10 @@
                     <h2 class="goal-data__sticky-title">Indonesia's Pulse</h2>
                     <p id="inject-pulse" style="color: var(--text-secondary); line-height: 1.6; max-width: 400px;"></p>
                 </div>
-                <!-- Container kosong buat Bento -->
                 <div class="goal-data__bento" id="inject-bento"></div>
             </div>
         </section>
 
-        <!-- Container kosong buat Targets -->
         <section class="goal-targets">
             <div class="goal-targets__inner">
                 <h2 class="goal-targets__title">Targets and Indicators</h2>
@@ -103,7 +99,8 @@
         </footer>
     </div>
 
-    <script type="module" src="./src/goal-main.js"></script>
+    <!-- Script (Perhatikan perubahan path menjadi ../ ) -->
+    <script type="module" src="../src/goal-main.js"></script>
 </body>
 
 </html>

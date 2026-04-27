@@ -38,6 +38,68 @@ export const goalData = {
                     description: "Proportion of men, women and children of all ages living in poverty in all its dimensions according to national definitions."
                 }
             ]
+
+
+        },
+        {
+            targetId: "1.4",
+            description: "By 2030, ensure that all men and women, in particular the poor and the vulnerable, have equal rights to economic resources, as well as access to basic services, ownership and control over land and other forms of property, inheritance, natural resources, appropriate new technology and financial services, including microfinance",
+            indicators: [
+                {
+                    id: "1.4.1",
+                    description: "Proportion of population living in households with access to basic services"
+                },
+                {
+                    id: "1.4.2",
+                    description: "Proportion of total adult population with secure tenure rights to land, (a) with legally recognized documentation, and (b) who perceive their rights to land as secure, by sex and by type of tenure"
+                }
+            ]
+        },
+        {
+            targetId: "1.5",
+            description: "By 2030, build the resilience of the poor and those in vulnerable situations and reduce their exposure and vulnerability to climate-related extreme events and other economic, social and environmental shocks and disasters",
+            indicators: [
+                {
+                    id: "1.5.1",
+                    description: "Number of deaths, missing persons and directly affected persons attributed to disasters per 100,000 population"
+                },
+                {
+                    id: "1.5.2",
+                    description: "Direct economic loss attributed to disasters in relation to global gross domestic product (GDP)"
+                },
+                {
+                    id: "1.5.3",
+                    description: "Number of countries that adopt and implement national disaster risk reduction strategies in line with the Sendai Framework for Disaster Risk Reduction 2015-2030"
+                },
+                {
+                    id: "1.5.4",
+                    description: "Proportion of local governments that adopt and implement local disaster risk reduction strategies in line with national disaster risk reduction strategies"
+                }
+            ]
+        },
+        {
+            targetId: "1.a",
+            description: "Ensure significant mobilization of resources from a variety of sources, including through enhanced development cooperation, in order to provide adequate and predictable means for developing countries, in particular least developed countries, to implement programmes and policies to end poverty in all its dimensions",
+            indicators: [
+                {
+                    id: "1.a.1",
+                    description: "Total official development assistance grants that focus on poverty reduction as a share of the recipient country’s gross national income"
+                },
+                {
+                    id: "1.a.2",
+                    description: "Proportion of total government spending on essential services (education, health and social protection)"
+                }
+            ]
+        },
+        {
+            targetId: "1.b",
+            description: "Create sound policy frameworks at the national, regional and international levels, based on pro-poor and gender-sensitive development strategies, to support accelerated investment in poverty eradication actions",
+            indicators: [
+                {
+                    id: "1.b.1",
+                    description: "Pro-poor public social spending"
+                }
+            ]
         }
     ]
 };

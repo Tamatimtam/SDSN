@@ -205,7 +205,8 @@
 }
 
 .goal-targets__inner {
-    max-width: 1000px;
+    max-width: var(--container-max);
+    /* Diperlebar dari 1000px agar 2 kolom proporsional */
     margin: 0 auto;
 }
 
@@ -219,10 +220,19 @@
     border-bottom: 2px solid var(--border-subtle);
 }
 
+/* Container Grid 2 Kolom */
+#inject-targets {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 1.5rem;
+    align-items: start;
+    /* Penting: agar kartu tidak saling melar saat accordion dibuka */
+}
+
 .target-card {
     border: 1px solid var(--border-subtle);
     border-radius: var(--radius-sm);
-    margin-bottom: 1.5rem;
+    /* margin-bottom dihapus karena jarak sudah diatur oleh 'gap' pada grid */
     overflow: hidden;
     background: var(--bg-primary);
 }
