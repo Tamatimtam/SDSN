@@ -141,14 +141,41 @@ async function initGoal() {
             document.getElementById('inject-desc').textContent = data.description;
             document.getElementById('inject-pulse').textContent = data.pulseText;
 
-            const bentoHTML = data.bento.map(b => `
-                <div class="bento-box ${b.size === 'large' ? 'bento-box--large' : ''}">
-                    <div class="bento-box__number" ${b.color ? `style="color:${b.color}; font-size:2.5rem;"` : ''}>${b.number}</div>
-                    <div class="bento-box__label">${b.label}</div>
-                    ${b.sub ? `<p style="margin-top: 1rem; color: var(--text-secondary);">${b.sub}</p>` : ''}
+            const bentoHTML = data.pulseMetrics.map(item => `
+                <div class="pulse-card">
+                    <div class="pulse-card__label">${item.label}</div>
+                    <div class="pulse-card__value">${item.value}</div>
+                    ${item.trend ? `<div class="pulse-card__trend" style="color: ${item.trendColor || 'inherit'}">${item.trend}</div>` : ''}
+                    ${item.source ? `
+                        <div class="pulse-card__source">
+                            <strong>Sumber:</strong> 
+                            ${item.sourceUrl
+                        ? `<a href="${item.sourceUrl}" target="_blank" rel="noopener" class="pulse-card__link">${item.source}</a>`
+                        : `<span>${item.source}</span>`}
+                        </div>
+                    ` : ''}
                 </div>
             `).join('');
+
             document.getElementById('inject-bento').innerHTML = bentoHTML;
+            // FUNGSI BARU: Menyamakan tinggi Label & Value Pulse Cards agar seragam
+            const syncPulseHeights = () => {
+                const labels = document.querySelectorAll('.pulse-card__label');
+                const values = document.querySelectorAll('.pulse-card__value');
+
+                // Reset heights
+                labels.forEach(l => l.style.minHeight = 'auto');
+                values.forEach(v => v.style.minHeight = 'auto');
+
+                let maxLabelH = 0;
+                let maxValueH = 0;
+
+                labels.forEach(l => { if (l.offsetHeight > maxLabelH) maxLabelH = l.offsetHeight; });
+                values.forEach(v => { if (v.offsetHeight > maxValueH) maxValueH = v.offsetHeight; });
+
+                labels.forEach(l => l.style.minHeight = `${maxLabelH}px`);
+                values.forEach(v => v.style.minHeight = `${maxValueH}px`);
+            };
 
             const targetsHTML = data.targets.map(t => `
                 <div class="target-card">
@@ -196,13 +223,17 @@ async function initGoal() {
             // Jalankan fungsi setelah DOM di-render
             requestAnimationFrame(() => {
                 syncHeaderHeights();
+                syncPulseHeights(); // Tambahkan ini
             });
 
-            // Delay sedikit untuk resize window agar tidak terjadi lag saat merubah ukuran layar
+            // Delay sedikit untuk resize window
             let resizeTimer;
             window.addEventListener('resize', () => {
                 clearTimeout(resizeTimer);
-                resizeTimer = setTimeout(syncHeaderHeights, 150);
+                resizeTimer = setTimeout(() => {
+                    syncHeaderHeights();
+                    syncPulseHeights(); // Tambahkan ini
+                }, 150);
             });
 
         } catch (err) {
@@ -271,8 +302,8 @@ async function initGoal() {
             });
         });
 
-        document.querySelectorAll('.target-card').forEach((card, i) => {
-            gsap.fromTo(card, { opacity: 0, y: 30 }, { opacity: 1, y: 0, duration: 0.8, ease: 'back.out(2)', scrollTrigger: { trigger: card, start: 'top 90%' } });
+        document.querySelectorAll('.pulse-card').forEach((card, i) => {
+            gsap.fromTo(card, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.8, delay: i * 0.1, ease: 'back.out(2)', scrollTrigger: { trigger: card, start: 'top 85%' } });
         });
     });
 }

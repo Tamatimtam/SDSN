@@ -141,40 +141,89 @@
     margin-bottom: 1rem;
 }
 
-/* Scrolling Right Side (Bento) */
-.goal-data__bento {
+/* Scrolling Right Side (Pulse Dynamic Grid) */
+.goal-data__pulse-grid {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1.5rem;
+    /* Auto-fit otomatis mengatur kolom berapapun datanya (min lebar 240px) */
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 1.25rem;
 }
 
-.bento-box {
-    background: var(--bg-primary);
-    padding: 2.5rem;
-    border-radius: var(--radius-lg);
-    border: 1px solid var(--border-subtle);
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.02);
+/* Desain Dark Card Persis Gambar */
+.pulse-card {
+    background: #1f1f1f;
+    border: 1px solid #333;
+    border-radius: 12px;
+    padding: 1.5rem;
+    color: #fff;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: transform var(--transition-fast), border-color var(--transition-fast);
 }
 
-.bento-box--large {
-    grid-column: span 2;
+.pulse-card:hover {
+    transform: translateY(-4px);
+    border-color: #555;
 }
 
-.bento-box__number {
+.pulse-card__label {
+    font-size: 0.95rem;
+    color: #a0aec0;
+    margin-bottom: 0.6rem;
+    line-height: 1.4;
+    font-weight: 500;
+}
+
+.pulse-card__value {
     font-family: var(--font-display);
-    font-size: clamp(3rem, 5vw, 4.5rem);
+    font-size: 2.5rem;
     font-weight: 800;
-    color: var(--sdg-color);
-    line-height: 1;
-    margin-bottom: 0.5rem;
+    color: #ffffff;
+    line-height: 1.1;
+    margin-bottom: 0.4rem;
+    letter-spacing: -0.02em;
 }
 
-.bento-box__label {
+.pulse-card__trend {
     font-size: 0.9rem;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 0.1em;
     font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.25rem;
+}
+
+/* Pembatas & Footer yang menempel di bawah otomatis */
+
+.pulse-card__source {
+    font-size: 0.85rem;
+    color: #cbd5e0;
+}
+
+.pulse-card__source strong {
+    color: #ffffff;
+    font-weight: 700;
+}
+
+/* Styling Link Sumber */
+.pulse-card__link {
+    color: #60a5fa;
+    text-decoration: none;
+    font-weight: 500;
+    transition: all 0.3s ease;
+    display: inline-block;
+}
+
+.pulse-card__link:hover {
+    color: #93c5fd;
+    text-decoration: underline;
+    transform: translateX(3px);
+}
+
+/* Biar span biasa warnanya tetap konsisten jika bukan link */
+.pulse-card__source span {
+    color: #cbd5e0;
 }
 
 /* Responsive */

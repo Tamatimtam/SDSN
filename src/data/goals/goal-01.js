@@ -7,10 +7,55 @@ export const goalData = {
     pulseText: "Indonesia has made significant progress in reducing extreme poverty over the last decade, yet vulnerabilities remain, especially in rural areas.",
 
     // Data untuk Bento Grid
-    bento: [
-        { size: "large", number: "9.36%", label: "National Poverty Rate (2023)", sub: "Down from 9.54% in 2022." },
-        { size: "normal", number: "25.9M", label: "People Living in Poverty" },
-        { size: "normal", number: "↑ High", label: "Network Priority", color: "#4C9F38" }
+    pulseMetrics: [
+        {
+            label: "National Poverty Rate",
+            value: "8.57%",
+            trend: "▼ down from 9.36% (Mar 2023)",
+            trendColor: "#22c55e",
+            source: "BPS, Jan 2025",
+            sourceUrl: "https://www.bps.go.id"
+        },
+        {
+            label: "Number of People Living in Poverty",
+            value: "24.06 million",
+            trend: "▼ decreased by 1.84 million from 2023",
+            trendColor: "#22c55e",
+            source: "BPS, Jan 2025",
+            sourceUrl: "https://www.bps.go.id"
+        },
+        {
+            label: "Urban Poverty Rate",
+            value: "6.66%",
+            trend: "Sep 2024",
+            trendColor: "#64748b",
+            source: "BPS, Jan 2025",
+            sourceUrl: "https://www.bps.go.id"
+        },
+        {
+            label: "Rural Poverty Rate",
+            value: "11.34%",
+            trend: "Sep 2024",
+            trendColor: "#64748b",
+            source: "BPS, Jan 2025",
+            sourceUrl: "https://www.bps.go.id"
+        },
+        {
+            label: "Poverty Line",
+            value: "IDR 595K",
+            trend: "per capita/month, Sep 2024",
+            trendColor: "#64748b",
+            source: "BPS, Jan 2025",
+            sourceUrl: "https://www.bps.go.id"
+        },
+        {
+            label: "Extreme Poverty ($2.15/day)",
+            value: "2.0%",
+            trend: "2024",
+            trendColor: "#64748b",
+            source: "Asian Development Bank",
+            sourceUrl: "https://www.adb.org"
+        }
     ],
 
     // Data untuk Targets & Indicators
