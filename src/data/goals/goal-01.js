@@ -14,7 +14,7 @@ export const goalData = {
             trend: "▼ down from 9.36% (Mar 2023)",
             trendColor: "#22c55e",
             source: "BPS, Jan 2025",
-            sourceUrl: "https://www.bps.go.id"
+            sourceUrl: "https://www.bps.go.id/en/pressrelease/2025/01/15/2401/persentase-penduduk-miskin-september-2024-turun-menjadi-8-57-persen-.html"
         },
         {
             label: "Number of People Living in Poverty",
@@ -22,23 +22,23 @@ export const goalData = {
             trend: "▼ decreased by 1.84 million from 2023",
             trendColor: "#22c55e",
             source: "BPS, Jan 2025",
-            sourceUrl: "https://www.bps.go.id"
+            sourceUrl: "https://www.bps.go.id/en/pressrelease/2025/01/15/2401/persentase-penduduk-miskin-september-2024-turun-menjadi-8-57-persen-.html"
         },
         {
             label: "Urban Poverty Rate",
             value: "6.66%",
-            trend: "Sep 2024",
+            trend: "▼ decreased by 0.43% compared to March 2024",
             trendColor: "#64748b",
             source: "BPS, Jan 2025",
-            sourceUrl: "https://www.bps.go.id"
+            sourceUrl: "https://www.bps.go.id/en/pressrelease/2025/01/15/2401/persentase-penduduk-miskin-september-2024-turun-menjadi-8-57-persen-.html"
         },
         {
             label: "Rural Poverty Rate",
-            value: "11.34%",
-            trend: "Sep 2024",
+            value: "13.01 Million People",
+            trend: "Decreased by 0.57 million people compared to March 2024",
             trendColor: "#64748b",
             source: "BPS, Jan 2025",
-            sourceUrl: "https://www.bps.go.id"
+            sourceUrl: "https://www.bps.go.id/en/pressrelease/2025/01/15/2401/persentase-penduduk-miskin-september-2024-turun-menjadi-8-57-persen-.html"
         },
         {
             label: "Poverty Line",
@@ -46,7 +46,7 @@ export const goalData = {
             trend: "per capita/month, Sep 2024",
             trendColor: "#64748b",
             source: "BPS, Jan 2025",
-            sourceUrl: "https://www.bps.go.id"
+            sourceUrl: "https://www.bps.go.id/en/pressrelease/2025/01/15/2401/persentase-penduduk-miskin-september-2024-turun-menjadi-8-57-persen-.html"
         },
         {
             label: "Extreme Poverty ($2.15/day)",
@@ -54,7 +54,7 @@ export const goalData = {
             trend: "2024",
             trendColor: "#64748b",
             source: "Asian Development Bank",
-            sourceUrl: "https://www.adb.org"
+            sourceUrl: "https://www.adb.org/id/where-we-work/indonesia/poverty"
         }
     ],
 

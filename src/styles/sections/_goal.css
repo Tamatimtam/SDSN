@@ -563,7 +563,6 @@
     align-items: center;
     justify-content: space-between;
     /* Konten kiri dan kanan (split) */
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
 }
 
 .next-goal__bg {
@@ -636,6 +635,88 @@
 
 .next-goal:hover .next-goal__icon {
     transform: translateX(10px) scale(1.2);
+}
+
+/* ===== GOAL PAGE DYNAMIC FOOTER NAVIGATION ===== */
+.goal-page-wrapper .footer {
+    background: #000;
+    padding: 0;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer__nav-wrapper {
+    max-width: var(--container-max);
+    margin: 0 auto;
+    padding: 1.5rem var(--container-padding);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.footer-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    text-decoration: none;
+    color: #fff;
+    opacity: 0.7;
+    transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+.footer-nav-link:hover {
+    opacity: 1;
+    transform: scale(1.02);
+}
+
+.footer-nav-link i {
+    font-size: 1.5rem;
+}
+
+.footer-nav-text span {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1rem;
+    opacity: 0.5;
+}
+
+.footer-nav-text h3 {
+    font-family: var(--font-display);
+    font-weight: 800;
+    font-size: 1.2rem;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin: 0;
+}
+
+.footer-nav-link--next .footer-nav-text {
+    text-align: right;
+}
+
+.footer-copyright {
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.4);
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .footer__nav-wrapper {
+        flex-direction: column;
+        gap: 2rem;
+    }
+
+    .footer-copyright {
+        order: 1;
+        /* Copyright di tengah */
+    }
+
+    .footer-nav-link {
+        width: 100%;
+    }
+
+    .footer-nav-link--next {
+        justify-content: flex-end;
+        /* Dorong link 'next' ke kanan */
+    }
 }
 
 /* Biar footer bawahnya nempel pas */
