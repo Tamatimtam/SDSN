@@ -550,3 +550,96 @@
         font-size: 60vw;
     }
 }
+
+/* ===== NEXT GOAL SECTION ===== */
+.next-goal {
+    position: relative;
+    padding: 4rem var(--container-padding);
+    /* Ukuran dikurangi setengahnya */
+    background: #000;
+    cursor: pointer;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    /* Konten kiri dan kanan (split) */
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.next-goal__bg {
+    position: absolute;
+    inset: 0;
+    background: var(--next-sdg-color, #444);
+    transform: scaleY(0);
+    /* Sembunyi dengan scale vertikal */
+    transform-origin: bottom;
+    transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.next-goal:hover .next-goal__bg {
+    transform: scaleY(1);
+}
+
+.next-goal__inner {
+    position: relative;
+    z-index: 2;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+    max-width: var(--container-max);
+    margin: 0 auto;
+}
+
+.next-goal__label {
+    font-family: var(--font-display);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.4em;
+    color: rgba(255, 255, 255, 0.4);
+    transition: color 0.4s ease, transform 0.4s ease;
+}
+
+.next-goal:hover .next-goal__label {
+    color: #fff;
+    transform: translateX(10px);
+}
+
+.next-goal__title {
+    font-family: var(--font-display);
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
+    /* Ukuran font lebih manusiawi */
+    font-weight: 800;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin: 0;
+    text-transform: uppercase;
+    transition: transform 0.4s ease;
+}
+
+.next-goal:hover .next-goal__title {
+    transform: translateX(-10px);
+}
+
+.next-goal__id {
+    font-size: 0.8em;
+    opacity: 0.3;
+}
+
+.next-goal__icon {
+    font-size: 1.2rem;
+    transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.next-goal:hover .next-goal__icon {
+    transform: translateX(10px) scale(1.2);
+}
+
+/* Biar footer bawahnya nempel pas */
+.footer {
+    background: #000;
+    border-top: 1px solid rgba(255, 255, 255, 0.05);
+}

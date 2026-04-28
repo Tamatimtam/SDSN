@@ -1,4 +1,5 @@
 // File: SDSN/src/goal-main.js
+import { sdgs } from './data/sdgs.js';
 
 function waitForLibs() {
     return new Promise((resolve) => {
@@ -315,6 +316,46 @@ async function initGoal() {
             gsap.fromTo(card, { opacity: 0, y: 50 }, { opacity: 1, y: 0, duration: 0.8, delay: i * 0.1, ease: 'back.out(2)', scrollTrigger: { trigger: card, start: 'top 85%' } });
         });
     });
+
+    // --- NEXT GOAL LOGIC ---
+    const currentId = parseInt(goalId);
+    const nextId = currentId === 17 ? 1 : currentId + 1;
+    const nextIdPadded = String(nextId).padStart(2, '0');
+
+    // List warna & nama (idealnya ambil dari data/sdgs.js)
+    // Untuk sementara kita hardcode dulu warnanya agar simpel
+    const sdgMeta = {
+        1: { name: "No Poverty", color: "#E5243B" },
+        2: { name: "Zero Hunger", color: "#DDA63A" },
+        3: { name: "Good Health", color: "#4C9F38" },
+        // ... dst (nanti bisa di-import dari sdgs.js)
+    };
+
+    const nextData = sdgs.find(s => s.number === nextId); // Pastikan sdgs di-import di atas
+
+    const nextSection = document.getElementById('next-goal-link');
+    if (nextSection && nextData) {
+        // Inject Info Next Goal
+        nextSection.querySelector('.next-goal__id').textContent = nextIdPadded;
+        nextSection.querySelector('.next-goal__name').textContent = nextData.title;
+        nextSection.style.setProperty('--next-sdg-color', nextData.color);
+
+        // Click Interaction: Curtain Transition
+        nextSection.addEventListener('click', () => {
+            const curtain = document.getElementById('enter-curtain');
+            // Reset curtain ke bawah dulu sebelum naik
+            gsap.set(curtain, { y: '100%', backgroundColor: nextData.color });
+
+            gsap.to(curtain, {
+                y: '0%',
+                duration: 0.8,
+                ease: 'expo.inOut',
+                onComplete: () => {
+                    window.location.href = `./${nextIdPadded}.html`;
+                }
+            });
+        });
+    }
 }
 
 if (document.readyState === 'loading') {
