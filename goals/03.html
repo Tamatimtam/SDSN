@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en" class="goal-page">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Goal 03: Good Health and Well-Being — SDSN Indonesia</title>
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@600;800;900&display=swap"
+        rel="stylesheet" />
+
+    <!-- Core Libs -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js" defer></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js" defer></script>
+    <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js" defer></script>
+    <script src="https://unpkg.com/@phosphor-icons/web"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="../src/styles/main.css" />
+    <link rel="stylesheet" href="../src/styles/sections.css" />
+
+    <!-- WARNA KHUSUS UNTUK HALAMAN INI SAJA (Goal 03) -->
+    <style>
+        :root {
+            --sdg-color: #4C9F38;
+        }
+    </style>
+</head>
+
+<body class="is-loading goal-page" data-goal="03">
+
+    <div class="goal-curtain-hardcoded" id="enter-curtain"></div>
+
+    <div class="goal-page-wrapper" id="page-wrapper">
+
+        <header class="goal-header">
+            <a href="../index.html" class="goal-header__back"><i class="ph-bold ph-arrow-left"></i> Back to Goals</a>
+            <img src="../src/assets/logo.png" alt="SDSN Logo"
+                style="height: 36px; filter: grayscale(1) invert(1); opacity: 0.5;" />
+        </header>
+
+        <section class="goal-hero">
+            <div class="goal-hero__watermark">03</div>
+            <div class="goal-hero__inner">
+                <div class="goal-hero__content">
+                    <span class="goal-hero__label">GOAL 03</span>
+                    <h1 class="goal-hero__title" id="inject-title"></h1>
+                    <p class="goal-hero__desc" id="inject-desc"></p>
+                </div>
+                <div class="goal-hero__logo-wrap">
+                    <img id="inject-logo" src="" alt="SDG Logo" class="goal-hero__logo" />
+                </div>
+            </div>
+        </section>
+
+        <section class="goal-data">
+            <div class="goal-data__inner">
+                <div class="goal-data__sticky">
+                    <h2 class="goal-data__sticky-title">Indonesia's Pulse</h2>
+                    <p id="inject-pulse" style="color: var(--text-secondary); line-height: 1.6; max-width: 400px;"></p>
+                </div>
+                <div class="goal-data__pulse-grid" id="inject-bento"></div>
+            </div>
+        </section>
+
+        <section class="goal-targets">
+            <div class="goal-targets__inner">
+                <h2 class="goal-targets__title">Targets and Indicators</h2>
+                <div id="inject-targets"></div>
+            </div>
+        </section>
+
+        <!-- Container Navigasi yang diinject JS -->
+        <section class="goal-nav-section" id="goal-pagination"></section>
+
+        <!-- Footer Bersih Memakai Class Baru -->
+        <footer id="footer" class="goal-footer-simple">
+            <div class="footer__legal">
+                <span>&copy; 2026 Sustainable Development Solutions Network Indonesia.</span>
+            </div>
+        </footer>
+
+    </div>
+
+    <!-- Script -->
+    <script type="module" src="../src/goal-main.js"></script>
+</body>
+
+</html>
