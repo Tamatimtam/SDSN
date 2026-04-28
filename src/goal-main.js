@@ -186,7 +186,9 @@ async function initGoal() {
             const targetsHTML = data.targets.map(t => `
                 <div class="target-card">
                     <div class="target-card__header">
-                        <div class="target-card__badge"><span>${goalId}</span></div>
+                        <div class="target-card__badge">                            
+                            <img src="../src/assets/SDGs Logo/E SDG Icons WEB/E-WEB-Goal-${goalId}.png" alt="Goal ${goalId} Icon" />
+                        </div>
                         <div class="target-card__info">
                             <h3>Target</h3><span class="target-num">${t.targetId}</span>
                             <p>${t.description}</p>

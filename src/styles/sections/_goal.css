@@ -116,10 +116,9 @@
 
 .goal-hero__logo {
     width: clamp(280px, 35vw, 480px);
-    /* Ukuran logo dinamis */
     height: auto;
-    -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 70%, rgba(0, 0, 0, 0) 100%);
-    mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 70%, rgba(0, 0, 0, 0) 100%);
+    /* -webkit-mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 70%, rgba(0, 0, 0, 0) 100%);
+    mask-image: radial-gradient(circle, rgba(0, 0, 0, 1) 70%, rgba(0, 0, 0, 0) 100%); */
 }
 
 .goal-hero__label {
@@ -429,16 +428,27 @@
 
 
 .target-card__badge {
-    background: var(--sdg-color);
-    color: white;
-    width: 80px;
-    height: 80px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    border-radius: 4px;
+    width: 85px;
+    /* Sedikit dibesarkan agar logo lebih jelas terbaca */
+    height: 85px;
     flex-shrink: 0;
+    border-radius: 8px;
+    /* Sudut sedikit membulat agar lebih premium */
+    overflow: hidden;
+    /* Memastikan sudut gambar ikut membulat */
+    background: var(--sdg-color);
+    /* Fallback color saat gambar loading */
+
+    box-shadow: 0 4px 15px color-mix(in srgb, var(--sdg-color) 25%, transparent);
+}
+
+/* Hapus .target-card__badge span yang lama, ganti dengan img ini: */
+.target-card__badge img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    /* Memastikan logo memenuhi kotak secara sempurna */
+    display: block;
 }
 
 .target-card__badge span {
