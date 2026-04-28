@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="goal-page">
 
 <head>
     <meta charset="UTF-8" />
@@ -19,46 +19,24 @@
     <script src="https://unpkg.com/lenis@1.1.18/dist/lenis.min.js" defer></script>
     <script src="https://unpkg.com/@phosphor-icons/web"></script>
 
-    <!-- Styles (Perhatikan perubahan path menjadi ../ ) -->
+    <!-- Styles -->
     <link rel="stylesheet" href="../src/styles/main.css" />
     <link rel="stylesheet" href="../src/styles/sections.css" />
 
+    <!-- WARNA KHUSUS UNTUK HALAMAN INI SAJA (Ganti hex per file) -->
     <style>
         :root {
             --sdg-color: #DDA63A;
         }
-
-        html,
-        body {
-            background-color: var(--sdg-color);
-        }
-
-        .goal-curtain-hardcoded {
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100vw;
-            height: 100vh;
-            background-color: var(--sdg-color);
-            z-index: 999999;
-            transform: translateY(0%);
-            will-change: transform;
-            pointer-events: none;
-        }
-
-        .goal-page-wrapper {
-            opacity: 0;
-            background-color: var(--bg-primary);
-            min-height: 100vh;
-        }
     </style>
 </head>
 
-<body class="is-loading" data-goal="02">
+<body class="is-loading goal-page" data-goal="02">
 
     <div class="goal-curtain-hardcoded" id="enter-curtain"></div>
 
     <div class="goal-page-wrapper" id="page-wrapper">
+
         <header class="goal-header">
             <a href="../index.html" class="goal-header__back"><i class="ph-bold ph-arrow-left"></i> Back to Goals</a>
             <img src="../src/assets/logo.png" alt="SDSN Logo"
@@ -66,10 +44,10 @@
         </header>
 
         <section class="goal-hero">
-            <div class="goal-hero__watermark">02</div>
+            <div class="goal-hero__watermark">01</div>
             <div class="goal-hero__inner">
                 <div class="goal-hero__content">
-                    <span class="goal-hero__label">GOAL 02</span>
+                    <span class="goal-hero__label">GOAL 01</span>
                     <h1 class="goal-hero__title" id="inject-title"></h1>
                     <p class="goal-hero__desc" id="inject-desc"></p>
                 </div>
@@ -96,24 +74,19 @@
             </div>
         </section>
 
-        <section class="next-goal" id="next-goal-link">
-            <div class="next-goal__bg"></div>
-            <div class="next-goal__inner">
-                <span class="next-goal__label">Up Next</span>
-                <h2 class="next-goal__title">
-                    <span class="next-goal__id">03</span>
-                    <span class="next-goal__name">Good Health</span>
-                    <i class="ph-bold ph-arrow-right next-goal__icon"></i>
-                </h2>
-            </div>
-        </section>
+        <!-- Container Navigasi yang diinject JS -->
+        <section class="goal-nav-section" id="goal-pagination"></section>
 
-        <!-- FOOTER CONTAINER KOSONG - AKAN DIISI JS -->
-        <footer id="footer" class="footer"></footer>
+        <!-- Footer Bersih Memakai Class Baru -->
+        <footer id="footer" class="goal-footer-simple">
+            <div class="footer__legal">
+                <span>&copy; 2026 Sustainable Development Solutions Network Indonesia.</span>
+            </div>
+        </footer>
 
     </div>
 
-    <!-- Script (Perhatikan perubahan path menjadi ../ ) -->
+    <!-- Script -->
     <script type="module" src="../src/goal-main.js"></script>
 </body>
 

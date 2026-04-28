@@ -172,57 +172,67 @@ async function initGoal() {
         }
     }
 
-    // --- NAVIGATION LOGIC (NEXT GOAL & FOOTER) ---
+    // --- NAVIGATION LOGIC (GOAL PAGINATION) ---
     const currentId = parseInt(goalId);
-    const prevId = (currentId === 1) ? 17 : currentId - 1;
-    const nextId = (currentId === 17) ? 1 : currentId + 1;
 
-    const prevIdPadded = String(prevId).padStart(2, '0');
-    const nextIdPadded = String(nextId).padStart(2, '0');
+    // Karena SDG 1 tidak bisa ke belakang, dan SDG 17 tidak bisa ke depan
+    const prevId = currentId - 1;
+    const nextId = currentId + 1;
 
     const prevData = sdgs.find(s => s.number === prevId);
     const nextData = sdgs.find(s => s.number === nextId);
 
-    // Populate Next Goal Section
-    const nextSection = document.getElementById('next-goal-link');
-    if (nextSection && nextData) {
-        nextSection.querySelector('.next-goal__id').textContent = nextIdPadded;
-        nextSection.querySelector('.next-goal__name').textContent = nextData.title;
-        nextSection.style.setProperty('--next-sdg-color', nextData.color);
-        nextSection.addEventListener('click', () => handleGoalTransition(nextIdPadded, nextData.color));
-    }
+    const paginationContainer = document.getElementById('goal-pagination');
 
-    // Populate Footer Navigation
-    const footer = document.querySelector('.goal-page-wrapper .footer');
-    if (footer && prevData && nextData) {
-        footer.innerHTML = `
-            <div class="footer__nav-wrapper">
-                <a href="#" id="prev-goal-footer" class="footer-nav-link">
-                    <i class="ph-bold ph-arrow-left"></i>
-                    <div class="footer-nav-text">
-                        <span>${prevIdPadded}</span>
-                        <h3>${prevData.title}</h3>
+    if (paginationContainer) {
+        let htmlContent = '';
+
+        // Generate Tombol PREVIOUS (Hanya muncul jika bukan Goal 1)
+        if (prevData) {
+            const prevIdPadded = String(prevId).padStart(2, '0');
+            htmlContent += `
+                <a href="#" class="goal-nav-card goal-nav-card--prev" style="--nav-sdg-color: ${prevData.color}" data-target="${prevIdPadded}" data-color="${prevData.color}">
+                    <div class="goal-nav-bg"></div>
+                    <div class="goal-nav-content">
+                        <span class="goal-nav-label">Previous</span>
+                        <h2 class="goal-nav-title">
+                            <i class="ph-bold ph-arrow-left goal-nav-icon"></i>
+                            <span class="goal-nav-id">${prevIdPadded}</span>
+                            <span class="goal-nav-name">${prevData.title}</span>
+                        </h2>
                     </div>
                 </a>
-                <div class="footer-copyright">
-                    &copy; 2026 SDSN Indonesia
-                </div>
-                <a href="#" id="next-goal-footer" class="footer-nav-link footer-nav-link--next">
-                    <div class="footer-nav-text">
-                        <span>${nextIdPadded}</span>
-                        <h3>${nextData.title}</h3>
+            `;
+        }
+
+        // Generate Tombol NEXT (Hanya muncul jika bukan Goal 17)
+        if (nextData) {
+            const nextIdPadded = String(nextId).padStart(2, '0');
+            htmlContent += `
+                <a href="#" class="goal-nav-card goal-nav-card--next" style="--nav-sdg-color: ${nextData.color}" data-target="${nextIdPadded}" data-color="${nextData.color}">
+                    <div class="goal-nav-bg"></div>
+                    <div class="goal-nav-content">
+                        <span class="goal-nav-label">Up Next</span>
+                        <h2 class="goal-nav-title">
+                            <span class="goal-nav-id">${nextIdPadded}</span>
+                            <span class="goal-nav-name">${nextData.title}</span>
+                            <i class="ph-bold ph-arrow-right goal-nav-icon"></i>
+                        </h2>
                     </div>
-                    <i class="ph-bold ph-arrow-right"></i>
                 </a>
-            </div>
-        `;
-        document.getElementById('prev-goal-footer').addEventListener('click', (e) => {
-            e.preventDefault();
-            handleGoalTransition(prevIdPadded, prevData.color);
-        });
-        document.getElementById('next-goal-footer').addEventListener('click', (e) => {
-            e.preventDefault();
-            handleGoalTransition(nextIdPadded, nextData.color);
+            `;
+        }
+
+        paginationContainer.innerHTML = htmlContent;
+
+        // Pasang Event Listener Transisi Curtain untuk tombol-tombol tersebut
+        paginationContainer.querySelectorAll('.goal-nav-card').forEach(card => {
+            card.addEventListener('click', (e) => {
+                e.preventDefault();
+                const targetId = card.getAttribute('data-target');
+                const targetColor = card.getAttribute('data-color');
+                handleGoalTransition(targetId, targetColor);
+            });
         });
     }
 

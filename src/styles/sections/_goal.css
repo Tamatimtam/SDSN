@@ -551,176 +551,184 @@
     }
 }
 
-/* ===== NEXT GOAL SECTION ===== */
-.next-goal {
-    position: relative;
-    padding: 4rem var(--container-padding);
-    /* Ukuran dikurangi setengahnya */
+/* ===== GOAL PAGINATION (PREV & NEXT) ===== */
+.goal-nav-section {
+    display: flex;
+    width: 100%;
     background: #000;
+    /* BORDER ATAS DIHAPUS */
+    border-top: none;
+}
+
+@media (max-width: 768px) {
+    .goal-nav-section {
+        flex-direction: column;
+    }
+}
+
+.goal-nav-card {
+    flex: 1;
+    position: relative;
+    /* PADDING DIKECILKAN (dari 4rem jadi 2rem) */
+    padding: 2rem var(--container-padding);
     cursor: pointer;
     overflow: hidden;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    /* Konten kiri dan kanan (split) */
+    text-decoration: none;
+    transition: background 0.3s ease;
+    /* PASTIKAN TIDAK ADA BORDER SAMA SEKALI */
+    border: none !important;
+    outline: none;
 }
 
-.next-goal__bg {
+/* HAPUS BORDER TENGAH PEMBATAS (Jika dirasa mengganggu) */
+.goal-nav-card+.goal-nav-card {
+    border-left: none;
+}
+
+@media (max-width: 768px) {
+    .goal-nav-card+.goal-nav-card {
+        border-top: none;
+    }
+}
+
+.goal-nav-card--prev {
+    justify-content: flex-start;
+    text-align: left;
+}
+
+.goal-nav-card--next {
+    justify-content: flex-end;
+    text-align: right;
+}
+
+/* Background Hover Effect */
+.goal-nav-bg {
     position: absolute;
     inset: 0;
-    background: var(--next-sdg-color, #444);
+    background: var(--nav-sdg-color, #444);
     transform: scaleY(0);
-    /* Sembunyi dengan scale vertikal */
     transform-origin: bottom;
     transition: transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    z-index: 1;
 }
 
-.next-goal:hover .next-goal__bg {
+.goal-nav-card:hover .goal-nav-bg {
     transform: scaleY(1);
 }
 
-.next-goal__inner {
+.goal-nav-content {
     position: relative;
     z-index: 2;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
     width: 100%;
-    max-width: var(--container-max);
-    margin: 0 auto;
 }
 
-.next-goal__label {
+.goal-nav-label {
     font-family: var(--font-display);
-    font-size: 0.75rem;
+    font-size: 0.7rem;
+    /* Dikecilkan sedikit */
     font-weight: 700;
     text-transform: uppercase;
     letter-spacing: 0.4em;
     color: rgba(255, 255, 255, 0.4);
-    transition: color 0.4s ease, transform 0.4s ease;
+    display: block;
+    margin-bottom: 0.3rem;
+    /* Jarak teks diperkecil */
+    transition: color 0.4s ease;
 }
 
-.next-goal:hover .next-goal__label {
+.goal-nav-card:hover .goal-nav-label {
     color: #fff;
-    transform: translateX(10px);
 }
 
-.next-goal__title {
+.goal-nav-title {
     font-family: var(--font-display);
-    font-size: clamp(1.5rem, 3vw, 2.2rem);
-    /* Ukuran font lebih manusiawi */
+    /* FONT SIZE DIKECILKAN SEDIKIT agar proporsional dengan kotak barunya */
+    font-size: clamp(1.2rem, 2.5vw, 1.8rem);
     font-weight: 800;
     color: #fff;
     display: flex;
     align-items: center;
-    gap: 1rem;
+    gap: 0.8rem;
     margin: 0;
     text-transform: uppercase;
-    transition: transform 0.4s ease;
+    transition: transform 0.5s cubic-bezier(0.19, 1, 0.22, 1);
 }
 
-.next-goal:hover .next-goal__title {
+.goal-nav-card--prev:hover .goal-nav-title {
+    transform: translateX(10px);
+}
+
+.goal-nav-card--next:hover .goal-nav-title {
     transform: translateX(-10px);
 }
 
-.next-goal__id {
+.goal-nav-card--next .goal-nav-title {
+    justify-content: flex-end;
+}
+
+.goal-nav-id {
     font-size: 0.8em;
     opacity: 0.3;
 }
 
-.next-goal__icon {
-    font-size: 1.2rem;
+.goal-nav-icon {
+    font-size: 1.1rem;
     transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
-.next-goal:hover .next-goal__icon {
-    transform: translateX(10px) scale(1.2);
+.goal-nav-card--prev:hover .goal-nav-icon {
+    transform: translateX(-8px) scale(1.1);
 }
 
-/* ===== GOAL PAGE DYNAMIC FOOTER NAVIGATION ===== */
-.goal-page-wrapper .footer {
-    background: #000;
-    padding: 0;
-    border-top: 1px solid rgba(255, 255, 255, 0.1);
-}
-
-.footer__nav-wrapper {
-    max-width: var(--container-max);
-    margin: 0 auto;
-    padding: 1.5rem var(--container-padding);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.footer-nav-link {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-    text-decoration: none;
-    color: #fff;
-    opacity: 0.7;
-    transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-.footer-nav-link:hover {
-    opacity: 1;
-    transform: scale(1.02);
-}
-
-.footer-nav-link i {
-    font-size: 1.5rem;
-}
-
-.footer-nav-text span {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 1rem;
-    opacity: 0.5;
-}
-
-.footer-nav-text h3 {
-    font-family: var(--font-display);
-    font-weight: 800;
-    font-size: 1.2rem;
-    text-transform: uppercase;
-    letter-spacing: 0.05em;
-    margin: 0;
-}
-
-.footer-nav-link--next .footer-nav-text {
-    text-align: right;
-}
-
-.footer-copyright {
-    font-size: 0.8rem;
-    color: rgba(255, 255, 255, 0.4);
-    text-align: center;
-}
-
-@media (max-width: 768px) {
-    .footer__nav-wrapper {
-        flex-direction: column;
-        gap: 2rem;
-    }
-
-    .footer-copyright {
-        order: 1;
-        /* Copyright di tengah */
-    }
-
-    .footer-nav-link {
-        width: 100%;
-    }
-
-    .footer-nav-link--next {
-        justify-content: flex-end;
-        /* Dorong link 'next' ke kanan */
-    }
+.goal-nav-card--next:hover .goal-nav-icon {
+    transform: translateX(8px) scale(1.1);
 }
 
 /* Biar footer bawahnya nempel pas */
 .footer {
     background: #000;
     border-top: 1px solid rgba(255, 255, 255, 0.05);
+}
+
+/* ===== GOAL GLOBAL WRAPPER & CURTAIN ===== */
+html.goal-page,
+body.goal-page {
+    background-color: var(--sdg-color);
+}
+
+.goal-curtain-hardcoded {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: var(--sdg-color);
+    z-index: 999999;
+    transform: translateY(0%);
+    will-change: transform;
+    pointer-events: none;
+}
+
+.goal-page-wrapper {
+    opacity: 0;
+    background-color: var(--bg-primary);
+    min-height: 100vh;
+}
+
+/* ===== GOAL FOOTER ===== */
+.goal-footer-simple {
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 100px;
+    background: #000;
+}
+
+.goal-footer-simple .footer__legal {
+    color: rgba(255, 255, 255, 0.4);
+    text-align: center;
+    width: 100%;
 }
