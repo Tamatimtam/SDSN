@@ -65,7 +65,7 @@
     overflow: hidden;
     /* GRADASI: Putih di kiri (teks), mulai merah di tengah, solid merah di kanan (logo) */
     background: linear-gradient(90deg,
-            #ffffff 0%,
+            #ffffff 30%,
             #ffffff 10%,
             var(--sdg-color) 65%,
             var(--sdg-color) 100%);
@@ -197,106 +197,161 @@
     gap: 1.25rem;
 }
 
-/* Desain Dark Card Persis Gambar */
+/* ===== VIBRANT SDG COLOR CARD ===== */
 .pulse-card {
-    background: #1a1a1a;
-    /* Fallback */
-    background: var(--sdg-card-bg);
-
-    /* Menggunakan warna racikan baru */
-    border: 1px solid var(--sdg-card-border);
-    border-radius: 12px;
-    padding: 1.5rem;
+    position: relative;
+    /* Gradasi dari warna asli SDG ke warna SDG yang sedikit digelapkan (tidak flat) */
+    background: linear-gradient(145deg,
+            var(--sdg-color) 0%,
+            color-mix(in srgb, var(--sdg-color) 50%, #000000) 100%);
+    border: 1px solid color-mix(in srgb, var(--sdg-color) 80%, #ffffff);
+    border-radius: 16px;
+    padding: 1.8rem;
     color: #fff;
-    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+    /* Colored Drop Shadow: Bayangan mengikuti warna SDG */
+    box-shadow:
+        0 12px 30px color-mix(in srgb, var(--sdg-color) 30%, transparent),
+        inset 0 1px 1px rgba(255, 255, 255, 0.4);
+    /* Glass highlight di sisi atas */
     display: flex;
     flex-direction: column;
     height: 100%;
-    transition: all var(--transition-fast);
+    transition: all 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    overflow: hidden;
+    z-index: 1;
 }
 
+/* 1. AMBIENT WHITE GLOW (Cahaya putih di sudut agar lebih elegan) */
+.pulse-card::before {
+    content: '';
+    position: absolute;
+    top: -40px;
+    left: -40px;
+    width: 150px;
+    height: 150px;
+    background: #ffffff;
+    border-radius: 50%;
+    filter: blur(50px);
+    opacity: 0.15;
+    z-index: -1;
+    transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.19, 1, 0.22, 1);
+    pointer-events: none;
+}
+
+/* 2. NOISE TEXTURE (Kunci agar tidak terlihat seperti balok warna flat) */
+.pulse-card::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: -1;
+    opacity: 0.15;
+    mix-blend-mode: overlay;
+    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+    pointer-events: none;
+}
+
+/* HOVER STATE */
 .pulse-card:hover {
-    transform: translateY(-6px);
-    border-color: var(--sdg-card-hover);
-    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.3);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow:
+        0 20px 40px color-mix(in srgb, var(--sdg-color) 45%, transparent),
+        inset 0 1px 1px rgba(255, 255, 255, 0.6);
 }
 
-/* Update warna label agar lebih elegan di atas background berwarna */
-.pulse-card__label {
-    font-size: 0.95rem;
-    /* Mengambil warna putih dengan 60% opacity agar tetap menyatu */
-    color: rgba(255, 255, 255, 0.6);
-    margin-bottom: 0.6rem;
-    line-height: 1.4;
-    font-weight: 500;
+.pulse-card:hover::before {
+    opacity: 0.25;
+    transform: scale(1.3) translate(10px, 10px);
 }
 
-/* Update warna label agar lebih elegan di atas background berwarna */
-.pulse-card__label {
-    font-size: 0.95rem;
-    /* Mengambil warna putih dengan 60% opacity agar tetap menyatu */
-    color: rgba(255, 255, 255, 0.6);
-    margin-bottom: 0.6rem;
-    line-height: 1.4;
-    font-weight: 500;
-}
+/* --- TYPOGRAPHY (Disesuaikan agar kontras di atas warna cerah) --- */
 
 .pulse-card__label {
-    font-size: 0.95rem;
-    color: #a0aec0;
-    margin-bottom: 0.6rem;
-    line-height: 1.4;
-    font-weight: 500;
+    font-size: 0.85rem;
+    color: rgba(255, 255, 255, 0.9);
+    /* Lebih putih agar terbaca */
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    margin-bottom: 1rem;
+    font-weight: 600;
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+}
+
+/* Titik aksen jadi warna putih */
+.pulse-card__label::before {
+    content: '';
+    display: block;
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: #ffffff;
+    box-shadow: 0 0 8px rgba(255, 255, 255, 0.6);
 }
 
 .pulse-card__value {
     font-family: var(--font-display);
-    font-size: 2.5rem;
+    font-size: clamp(2rem, 3vw, 2.8rem);
     font-weight: 800;
     color: #ffffff;
+    text-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     line-height: 1.1;
-    margin-bottom: 0.4rem;
     letter-spacing: -0.02em;
+    margin-bottom: auto;
+    padding-bottom: 1.2rem;
 }
 
+/* 3. TREND BADGE FIX (Penting!) 
+   Di JS ada style="color: #22c55e". Di atas background merah, teks hijau akan sangat tidak terbaca.
+   Kita format jadi bentuk "Pill" transparan dengan teks putih.
+*/
 .pulse-card__trend {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
     font-weight: 600;
-    display: flex;
+    display: inline-flex;
     align-items: center;
-    gap: 0.25rem;
+    gap: 0.3rem;
+    margin-bottom: 0.5rem;
+    background: rgba(0, 0, 0, 0.15);
+    /* Badge gelap transparan */
+    padding: 0.35rem 0.75rem;
+    border-radius: 100px;
+    width: fit-content;
+    color: #ffffff !important;
+    /* Timpa inline style dari JS */
+    box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.1);
 }
-
-/* Pembatas & Footer yang menempel di bawah otomatis */
 
 .pulse-card__source {
-    font-size: 0.85rem;
-    color: #cbd5e0;
+    font-size: 0.8rem;
+    color: rgba(255, 255, 255, 0.8);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+    padding-top: 0.75rem;
+    margin-top: 0.25rem;
 }
 
 .pulse-card__source strong {
     color: #ffffff;
-    font-weight: 700;
+    font-weight: 600;
 }
 
-/* Styling Link Sumber */
+/* Link diubah jadi putih dengan garis bawah tipis */
 .pulse-card__link {
-    color: #60a5fa;
-    text-decoration: none;
-    font-weight: 500;
+    color: #ffffff;
+    text-decoration: underline;
+    text-decoration-color: rgba(255, 255, 255, 0.4);
+    text-underline-offset: 3px;
+    font-weight: 600;
     transition: all 0.3s ease;
-    display: inline-block;
 }
 
 .pulse-card__link:hover {
-    color: #93c5fd;
-    text-decoration: underline;
+    text-decoration-color: #ffffff;
     transform: translateX(3px);
 }
 
-/* Biar span biasa warnanya tetap konsisten jika bukan link */
 .pulse-card__source span {
-    color: #cbd5e0;
+    color: rgba(255, 255, 255, 0.8);
 }
 
 /* Responsive */
@@ -348,17 +403,21 @@
     grid-template-columns: repeat(2, 1fr);
     gap: 1.5rem;
     align-items: start;
-    /* Penting: agar kartu tidak saling melar saat accordion dibuka */
 }
 
 .target-card {
     border: 1px solid var(--border-subtle);
-    border-radius: var(--radius-sm);
+    border-radius: var(--radius-md);
+    /* Sedikit membulat agar modern */
     overflow: hidden;
     background: var(--bg-primary);
     display: flex;
     flex-direction: column;
-    height: 100%;
+}
+
+.target-card:hover {
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
+    border-color: var(--border-hover);
 }
 
 .target-card__header {
@@ -366,9 +425,8 @@
     padding: 1.5rem;
     gap: 1.5rem;
     align-items: flex-start;
-    flex-grow: 1;
-    /* Mendorong tombol accordion selalu nempel di bawah jika header membesar */
 }
+
 
 .target-card__badge {
     background: var(--sdg-color);
