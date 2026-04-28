@@ -94,52 +94,56 @@ export function initSDGs() {
             card.addEventListener('click', (e) => {
                 e.preventDefault();
 
-                // Ambil data spesifik dari kartu yang diklik
                 const sdgNum = card.getAttribute('data-sdg');
                 const sdgColor = card.getAttribute('data-color');
-
-                // Ubah routing agar merujuk ke folder goals/
                 const targetUrl = `./goals/${sdgNum}.html`;
 
-                // 1. Taktil Feedback: Kartu ditekan ke dalam
                 gsap.to(card, {
                     scale: 0.9,
                     duration: 0.3,
                     ease: 'power2.out'
                 });
 
-                // 2. Buat elemen transisi tirai secara dinamis
                 const curtain = document.createElement('div');
                 curtain.style.position = 'fixed';
-                curtain.style.top = '0';
-                curtain.style.left = '0';
+                curtain.style.inset = '0';
                 curtain.style.width = '100vw';
                 curtain.style.height = '100vh';
                 curtain.style.backgroundColor = sdgColor;
                 curtain.style.zIndex = '99999';
-                curtain.style.pointerEvents = 'none'; // Biar gak ngeblok klik selagi gerak
-                // Mulai dari bawah layar
-                curtain.style.transform = 'translateY(100%)';
+                curtain.style.pointerEvents = 'none';
                 document.body.appendChild(curtain);
 
-                // 3. Matikan scroll Lenis agar layar tidak bergeser saat transisi
                 if (window.lenisInstance) {
                     window.lenisInstance.stop();
                 }
                 document.body.style.overflow = 'hidden';
 
-                // 4. GSAP Animasi Tirai Menyapu Ke Atas
+                // --- RANDOM DIRECTION LOGIC ---
+                const directions = [
+                    { x: '0%', y: '100%' },
+                    { x: '0%', y: '-100%' },
+                    { x: '-100%', y: '0%' },
+                    { x: '100%', y: '0%' }
+                ];
+                const randStart = directions[Math.floor(Math.random() * directions.length)];
+
+                // Set posisi awal di luar layar
+                gsap.set(curtain, { x: randStart.x, y: randStart.y });
+
+                // Animasi masuk menutup layar
                 gsap.to(curtain, {
+                    x: '0%',
                     y: '0%',
-                    duration: 0.8, // DIPERCEPAT (dari 1) biar gak ngerem
-                    ease: 'expo.inOut', // Cinematic feeling
+                    duration: 0.8,
+                    ease: 'expo.inOut',
                     delay: 0.05,
                     onComplete: () => {
-                        // 5. Pindah halaman
                         window.location.href = targetUrl;
                     }
                 });
             });
+
         });
     });
 }

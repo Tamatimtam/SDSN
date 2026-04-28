@@ -89,13 +89,34 @@ function initLenis() {
 }
 
 // Reusable function for curtain transition
+// Reusable function for curtain transition (RANDOM DIRECTION)
 function handleGoalTransition(targetIdPadded, targetColor) {
     const curtain = document.getElementById('enter-curtain');
     if (window.lenisInstance) window.lenisInstance.stop();
     document.body.style.overflow = 'hidden';
 
-    gsap.set(curtain, { y: '100%', backgroundColor: targetColor });
+    // 1. Definisikan 4 arah mata angin (Atas, Bawah, Kiri, Kanan)
+    const directions = [
+        { x: '0%', y: '100%' },   // Dari Bawah
+        { x: '0%', y: '-100%' },  // Dari Atas
+        { x: '-100%', y: '0%' },  // Dari Kiri
+        { x: '100%', y: '0%' }    // Dari Kanan
+    ];
+
+    // 2. Pilih arah secara acak
+    const randomStart = directions[Math.floor(Math.random() * directions.length)];
+
+    // 3. Set posisi awal tirai di luar layar sesuai arah acak
+    gsap.set(curtain, {
+        x: randomStart.x,
+        y: randomStart.y,
+        backgroundColor: targetColor,
+        display: 'block'
+    });
+
+    // 4. Tarik tirai masuk menutupi layar (ke titik 0,0)
     gsap.to(curtain, {
+        x: '0%',
         y: '0%',
         duration: 0.8,
         ease: 'expo.inOut',
@@ -256,7 +277,27 @@ async function initGoal() {
             }
         });
 
-        if (curtain) tl.to(curtain, { y: '-100%', duration: 1.2, ease: 'expo.inOut' });
+        // Animasi tirai membuka secara acak saat halaman baru dimuat
+        if (curtain) {
+            const exitDirections = [
+                { x: '0%', y: '-100%' }, // Pergi ke Atas
+                { x: '0%', y: '100%' },  // Pergi ke Bawah
+                { x: '-100%', y: '0%' }, // Pergi ke Kiri
+                { x: '100%', y: '0%' }   // Pergi ke Kanan
+            ];
+            const randomExit = exitDirections[Math.floor(Math.random() * exitDirections.length)];
+
+            // Pastikan posisinya menutupi layar terlebih dahulu
+            gsap.set(curtain, { x: '0%', y: '0%' });
+
+            // Sapu tirai keluar layar
+            tl.to(curtain, {
+                x: randomExit.x,
+                y: randomExit.y,
+                duration: 1.2,
+                ease: 'expo.inOut'
+            });
+        }
 
         if (label && titleChars.length > 0 && desc) {
             tl.fromTo(label, { opacity: 0, y: 20 }, { opacity: 1, y: 0, duration: 0.6, ease: 'back.out(2)' }, "-=0.8")
