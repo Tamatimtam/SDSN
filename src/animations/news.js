@@ -1,5 +1,5 @@
 // News bento grid — cards animate in from different directions
-import { news } from '../data/news.js';
+import { news } from '/src/data/news.js';
 
 export function initNews() {
     const bento = document.getElementById('news-bento');

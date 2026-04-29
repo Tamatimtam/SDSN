@@ -1,5 +1,5 @@
 // SDG horizontal scroll carousel — ScrollTrigger pinned horizontal scroll + Curtain Transition
-import { sdgs } from '../data/sdgs.js';
+import { sdgs } from '/src/data/sdgs.js';
 
 export function initSDGs() {
     const carousel = document.getElementById('sdgs-carousel');

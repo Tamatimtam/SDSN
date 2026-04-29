@@ -1,5 +1,5 @@
 // Events timeline — alternating card reveals
-import { events } from '../data/team.js';
+import { events } from '/src/data/team.js';
 
 export function initEvents() {
     const timeline = document.getElementById('events-timeline');

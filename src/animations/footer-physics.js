@@ -1,5 +1,5 @@
 // SDG Physics Canvas — falling interactive boxes using Matter.js transitioning to GSAP Marquee
-import { sdgs } from '../data/sdgs.js';
+import { sdgs } from '/src/data/sdgs.js';
 
 export function initFooterPhysics() {
     const canvasContainer = document.getElementById('canvas-target');

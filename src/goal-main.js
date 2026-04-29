@@ -1,6 +1,7 @@
 // File: SDSN/src/goal-main.js
 // KUNCI 1: Menggunakan path absolut dari root server '/src/...'
 import { sdgs } from '/src/data/sdgs.js';
+import { initCoinGame } from './animations/coin-game.js';
 
 function waitForLibs() {
     return new Promise((resolve) => {
@@ -333,7 +334,11 @@ async function initGoal() {
 }
 
 if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', initGoal);
+    document.addEventListener('DOMContentLoaded', () => {
+        initGoal();
+        if (document.body.dataset.goal === '01') initCoinGame();
+    });
 } else {
     initGoal();
+    if (document.body.dataset.goal === '01') initCoinGame();
 }

@@ -1,5 +1,5 @@
 // Footer — MoMoney-inspired big nav links + floating SDG-colored circles
-import { sdgs } from '../data/sdgs.js';
+import { sdgs } from '/src/data/sdgs.js';
 
 export function initFooter() {
     const footer = document.getElementById('footer');

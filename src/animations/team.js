@@ -1,5 +1,5 @@
 // Team section — staggered card entrance with hover effects
-import { team } from '../data/team.js';
+import { team } from '/src/data/team.js';
 
 export function initTeam() {
     const grid = document.getElementById('team-grid');

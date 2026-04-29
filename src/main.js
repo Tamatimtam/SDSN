@@ -1,14 +1,15 @@
 // Main entry — initialise GSAP plugins, Lenis smooth scroll, all section animations
-import { initHeader } from './animations/header.js';
-import { initHero } from './animations/hero.js';
-import { initAbout } from './animations/about.js';
-import { initSDGs } from './animations/sdgs.js';
-import { initNews } from './animations/news.js';
-import { initEvents } from './animations/events.js';
-import { initTeam } from './animations/team.js';
-import { initFooter } from './animations/footer.js';
-import { initFooterPhysics } from './animations/footer-physics.js';
-import { sdgs } from './data/sdgs.js';
+// src/main.js
+import { initHeader } from '/src/animations/header.js';
+import { initHero } from '/src/animations/hero.js';
+import { initAbout } from '/src/animations/about.js';
+import { initSDGs } from '/src/animations/sdgs.js';
+import { initNews } from '/src/animations/news.js';
+import { initEvents } from '/src/animations/events.js';
+import { initTeam } from '/src/animations/team.js';
+import { initFooter } from '/src/animations/footer.js';
+import { initFooterPhysics } from '/src/animations/footer-physics.js';
+import { sdgs } from '/src/data/sdgs.js';
 
 // Wait for GSAP to load (required), Lenis is optional
 function waitForGsap() {
