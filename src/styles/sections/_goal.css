@@ -66,7 +66,7 @@
     /* GRADASI: Putih di kiri (teks), mulai merah di tengah, solid merah di kanan (logo) */
     background: linear-gradient(90deg,
             #ffffff 30%,
-            #ffffff 10%,
+            #ffffff 30%,
             var(--sdg-color) 65%,
             var(--sdg-color) 100%);
 }
@@ -731,4 +731,24 @@ body.goal-page {
     color: rgba(255, 255, 255, 0.4);
     text-align: center;
     width: 100%;
+}
+
+@media (max-width: 640px) {
+    #inject-targets {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+    }
+
+    .target-card__header {
+        gap: 1rem;
+    }
+
+    .target-card__badge {
+        width: 64px;
+        height: 64px;
+    }
+
+    .goal-targets__title {
+        font-size: clamp(1.5rem, 6vw, 2rem);
+    }
 }
