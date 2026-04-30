@@ -26,6 +26,28 @@
     align-items: center;
 }
 
+/* Membuat logo SDSN mengikuti scroll & Otomatis ganti warna */
+.goal-header img {
+    position: fixed !important;
+    top: 1.5rem;
+    right: var(--container-padding);
+    z-index: 1000;
+
+    /* Timpa filter bawaan HTML */
+    filter: none !important;
+    opacity: 0.7 !important;
+
+    /* Efek magis: Otomatis kontras dengan background di belakangnya */
+    mix-blend-mode: difference;
+
+    /* Agar transisinya mulus jika Anda scroll cepat */
+    transition: opacity 0.3s ease;
+}
+
+.goal-header img:hover {
+    opacity: 1 !important;
+}
+
 .goal-header__back {
     display: inline-flex;
     align-items: center;
