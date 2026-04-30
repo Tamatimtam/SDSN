@@ -67,7 +67,7 @@
     background: linear-gradient(90deg,
             #ffffff 30%,
             #ffffff 30%,
-            var(--sdg-color) 65%,
+            var(--sdg-color) 55%,
             var(--sdg-color) 100%);
 }
 
