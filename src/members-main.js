@@ -4,14 +4,30 @@ import { members, memberStats } from './data/members.js';
 // Leaflet coordinates for the institutions
 const cityCoords = {
     'DKI Jakarta': [-6.2088, 106.8456],
+    'Jakarta': [-6.2088, 106.8456],
+    'Central Jakarta': [-6.1805, 106.8284],
+    'Jakarta Selatan': [-6.2615, 106.8106],
     'Semarang': [-6.9667, 110.4167],
+    'Kota Semarang': [-6.9667, 110.4167],
     'Aceh': [5.5483, 95.3238],
+    'Banda Aceh': [5.5483, 95.3238],
+    'Aceh Besar': [5.3856, 95.5113],
     'Palangka Raya': [-2.2083, 113.9167],
     'Padang': [-0.9471, 100.3697],
     'Bengkulu': [-3.8004, 102.2562],
     'Bogor': [-6.5971, 106.7932],
     'Tangerang': [-6.2886, 106.7179],
-    'Bandung': [-6.9175, 107.6191]
+    'Tangerang Selatan': [-6.2886, 106.7179],
+    'Bandung': [-6.9175, 107.6191],
+    'Bandung, West Java': [-6.9175, 107.6191],
+    'Kab. Bandung': [-7.0265, 107.5225],
+    'Jawa Barat': [-6.9147, 107.6098],
+    'Bali': [-8.3405, 115.0920],
+    'West Denpasar': [-8.6705, 115.2126],
+    'Yogyakarta': [-7.7956, 110.3695],
+    'Banten': [-6.1200, 106.1503],
+    'Jayapura': [-2.5337, 140.7181],
+    'Makassar': [-5.1477, 119.4327]
 };
 
 // SDG colors for rainbow effects
@@ -111,7 +127,7 @@ function initMap() {
                 <h4 style="margin:0 0 0.5rem; font-family:var(--font-display); font-size:1.1rem; border-bottom:2px solid ${color}; padding-bottom:0.2rem;">${city}</h4>
                 ${cityMembers.map(m => `
                     <div style="margin-bottom:0.8rem; display:flex; align-items:center; gap:0.5rem;">
-                        <img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${m.website}&size=128" style="width:28px; height:28px; object-fit:contain; border-radius:4px; background:white; padding:3px; flex-shrink:0;" onerror="this.style.display='none';" />
+                        <img src="${m.logo}" style="width:28px; height:28px; object-fit:contain; border-radius:4px; background:white; padding:3px; flex-shrink:0;" onerror="this.style.display='none';" />
                         <div>
                             <span class="map-popup__sector" style="background:${m.accentColor}">${m.sector}</span>
                             <div class="map-popup__name" style="margin-top:0.2rem; margin-bottom:0px;">${m.name}</div>
@@ -162,7 +178,7 @@ function renderStats() {
     const statsData = [
         { num: memberStats.total, label: 'Member Institutions', suffix: '' },
         { num: memberStats.universities, label: 'Universities', suffix: '' },
-        { num: memberStats.ngos, label: 'NGO Partners', suffix: '' },
+        { num: memberStats.ngos, label: 'NGO & CSO Partners', suffix: '' },
         { num: memberStats.cities, label: 'Cities', suffix: '+' }
     ];
 
@@ -198,11 +214,11 @@ function renderEpicCards() {
             <div class="member-card__bg" style="background: url('${cardBgImage}') center/cover; opacity: 0; filter: blur(5px) saturate(0%); mix-blend-mode: luminosity;"></div>
             <div class="member-card__bg" style="background: ${member.accentColor}; mix-blend-mode: multiply;"></div>
             <div class="member-card__overlay"></div>
-            <img class="member-card__watermark" src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${member.website}&size=256" onerror="this.style.display='none'" />
+            <img class="member-card__watermark" src="${member.logo}" onerror="this.style.display='none'" />
             
             <div class="member-card__floating-logo">
                 <div class="member-card__floating-logo-inner" style="background:white; padding: 6px;">
-                    <img src="https://t2.gstatic.com/faviconV2?client=SOCIAL&type=FAVICON&fallback_opts=TYPE,SIZE,URL&url=${member.website}&size=256" alt="${member.initials} Logo" onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.style.display='flex';" />
+                    <img src="${member.logo}" alt="${member.initials} Logo" onerror="this.onerror=null; this.style.display='none'; this.nextElementSibling.style.display='flex';" />
                     <div class="member-card__logo-initials-fallback" style="display:none; width:100%; height:100%; align-items:center; justify-content:center; background:${member.accentColor}; color:white; border-radius:4px; font-family:var(--font-display); font-weight:800; font-size:1.2rem;">${member.initials}</div>
                 </div>
             </div>
@@ -214,7 +230,7 @@ function renderEpicCards() {
                     <h3 class="member-card__name">${member.name}</h3>
                     <div class="member-card__meta">
                         <span class="member-card__badge">
-                            <i class="ph-bold ${member.sector === 'University' ? 'ph-graduation-cap' : 'ph-hand-heart'}"></i>
+                            <i class="ph-bold ${member.sector === 'University' ? 'ph-graduation-cap' : member.sector === 'Research' ? 'ph-flask' : member.sector === 'Foundation' ? 'ph-buildings' : 'ph-hand-heart'}"></i>
                             ${member.sector}
                         </span>
                         <span class="member-card__badge">
@@ -335,7 +351,7 @@ function initFilters() {
                     // Update visibility
                     cards.forEach(card => {
                         const sector = card.dataset.sector;
-                        const show = filter === 'all' || sector === filter;
+                        const show = filter === 'all' || sector === filter || (filter === 'NGO' && sector === 'CSO');
 
                         if (show) {
                             card.classList.remove('is-hidden');

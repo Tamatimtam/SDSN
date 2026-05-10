@@ -513,6 +513,10 @@
     transition: filter 0.5s ease;
 }
 
+.member-card:hover:not(.is-expanded) .member-card__floating-logo img {
+    filter: grayscale(0%);
+}
+
 .member-card__logo-spacer {
     width: 64px;
     height: 64px;
