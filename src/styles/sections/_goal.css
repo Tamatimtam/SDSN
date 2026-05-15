@@ -87,7 +87,7 @@
     overflow: hidden;
     /* GRADASI: Putih di kiri (teks), mulai merah di tengah, solid merah di kanan (logo) */
     background: linear-gradient(90deg,
-            #ffffff 30%,
+            #ffffff 10%,
             #ffffff 30%,
             var(--sdg-color) 55%,
             var(--sdg-color) 100%);

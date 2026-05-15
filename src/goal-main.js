@@ -89,25 +89,21 @@ function initLenis() {
     lenis.resize();
 }
 
-// Reusable function for curtain transition
 // Reusable function for curtain transition (RANDOM DIRECTION)
 function handleGoalTransition(targetIdPadded, targetColor) {
     const curtain = document.getElementById('enter-curtain');
     if (window.lenisInstance) window.lenisInstance.stop();
     document.body.style.overflow = 'hidden';
 
-    // 1. Definisikan 4 arah mata angin (Atas, Bawah, Kiri, Kanan)
     const directions = [
-        { x: '0%', y: '100%' },   // Dari Bawah
-        { x: '0%', y: '-100%' },  // Dari Atas
-        { x: '-100%', y: '0%' },  // Dari Kiri
-        { x: '100%', y: '0%' }    // Dari Kanan
+        { x: '0%', y: '100%' },
+        { x: '0%', y: '-100%' },
+        { x: '-100%', y: '0%' },
+        { x: '100%', y: '0%' }
     ];
 
-    // 2. Pilih arah secara acak
     const randomStart = directions[Math.floor(Math.random() * directions.length)];
 
-    // 3. Set posisi awal tirai di luar layar sesuai arah acak
     gsap.set(curtain, {
         x: randomStart.x,
         y: randomStart.y,
@@ -115,14 +111,18 @@ function handleGoalTransition(targetIdPadded, targetColor) {
         display: 'block'
     });
 
-    // 4. Tarik tirai masuk menutupi layar (ke titik 0,0)
     gsap.to(curtain, {
         x: '0%',
         y: '0%',
         duration: 0.8,
         ease: 'expo.inOut',
         onComplete: () => {
-            window.location.href = `./${targetIdPadded}.html`;
+            // 👇 BAGIAN INI YANG DIUBAH
+            if (targetIdPadded === 'home') {
+                window.location.href = '../index.html'; // Balik ke halaman utama
+            } else {
+                window.location.href = `./${targetIdPadded}.html`; // Ke halaman Goal
+            }
         }
     });
 }
@@ -239,6 +239,21 @@ async function initGoal() {
                             <span class="goal-nav-id">${nextIdPadded}</span>
                             <span class="goal-nav-name">${nextData.title}</span>
                             <i class="ph-bold ph-arrow-right goal-nav-icon"></i>
+                        </h2>
+                    </div>
+                </a>
+            `;
+        }
+
+        else if (currentId === 17) {
+            htmlContent += `
+                <a href="#" class="goal-nav-card goal-nav-card--next" style="--nav-sdg-color: #121416" data-target="home" data-color="#121416">
+                    <div class="goal-nav-bg"></div>
+                    <div class="goal-nav-content">
+                        <span class="goal-nav-label">Return</span>
+                        <h2 class="goal-nav-title">
+                            <span class="goal-nav-name">Back to Home</span>
+                            <i class="ph-bold ph-house goal-nav-icon"></i>
                         </h2>
                     </div>
                 </a>
