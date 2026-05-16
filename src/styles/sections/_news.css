@@ -31,6 +31,8 @@
 /* News Card */
 .news-card {
     position: relative;
+    display: block;
+    text-decoration: none;
     border-radius: var(--radius-lg);
     overflow: hidden;
     cursor: pointer;

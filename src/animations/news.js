@@ -10,7 +10,7 @@ export function initNews() {
     bento.innerHTML = news.map((item, i) => {
         const isLarge = i === 0;
         return `
-      <article class="news-card ${isLarge ? 'news-card--large' : ''}" data-index="${i}">
+      <a href="${item.link || '#'}" class="news-card ${isLarge ? 'news-card--large' : ''}" data-index="${i}" target="_blank" rel="noopener">
         <div class="news-card__min-height">
           <img class="news-card__image" src="${item.image}" alt="${item.title}" loading="lazy" />
           <div class="news-card__overlay"></div>
@@ -22,7 +22,7 @@ export function initNews() {
             </div>
           </div>
         </div>
-      </article>
+      </a>
     `;
     }).join('');
 

@@ -12,7 +12,7 @@ export function initEvents() {
       const sdgColorVar = `var(--sdg-${(i % 17) + 1})`;
       
       return `
-    <a href="#" class="event-card" data-index="${i}" style="--event-color: ${sdgColorVar};">
+    <a href="${event.link || '#'}" class="event-card" data-index="${i}" style="--event-color: ${sdgColorVar};" target="_blank" rel="noopener">
       <div class="event-card__top">
         <div class="event-card__date" style="color: var(--event-color);">${event.date}</div>
         <h3 class="event-card__title">${event.title}</h3>
