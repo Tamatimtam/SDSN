@@ -10,13 +10,49 @@ export const team = [
         name: "Adnan Hasyim Wibowo",
         role: "Network Manager",
         org: "SDSN Indonesia",
-        avatar: "/src/assets/team/adnan.webp"
+        avatar: "/src/assets/team/adnan.jpg"
     },
     {
         name: "Prima Wijayakusuma",
-        role: "Assistant Network Manager",
+        role: "Network Manager",
         org: "SDSN Indonesia",
         avatar: "/src/assets/team/prima.png"
+    },
+    {
+        name: "Ghina Aulia Sayidina Putri Rahayu",
+        role: "Creative Manager",
+        org: "SDSN Indonesia",
+        avatar: "/src/assets/team/ghina.jpg"
+    },
+    {
+        name: "Nur Syifa Nadiastuti",
+        role: "Creative Manager",
+        org: "SDSN Indonesia",
+        avatar: "/src/assets/team/syifa.png"
+    },
+    {
+        name: "Pratama Varian Andika Parulian",
+        role: "IT Manager",
+        org: "SDSN Indonesia",
+        avatar: "/src/assets/team/tama.jpg"
+    },
+    {
+        name: "Muhammad Abian Abdi Pratama",
+        role: "IT Manager",
+        org: "SDSN Indonesia",
+        avatar: "/src/assets/team/abian.jpg"
+    },
+    {
+        name: "Christian Nataniel Yosua Purba",
+        role: "IT Manager",
+        org: "SDSN Indonesia",
+        avatar: "/src/assets/team/christian.png"
+    },
+    {
+        name: "Maya Indrawati",
+        role: "Communications Director",
+        org: "SDSN Indonesia",
+        avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80"
     },
     {
         name: "Amirah Majid",
@@ -29,12 +65,6 @@ export const team = [
         role: "Manager, Asia Pacific",
         org: "Networks Program",
         avatar: "/src/assets/team/gautham.png"
-    },
-    {
-        name: "Maya Indrawati",
-        role: "Communications Director",
-        org: "SDSN Indonesia",
-        avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80"
     }
 ];
 
