@@ -47,24 +47,6 @@ export const team = [
         role: "IT Manager",
         org: "SDSN Indonesia",
         avatar: "/src/assets/team/christian.png"
-    },
-    {
-        name: "Maya Indrawati",
-        role: "Communications Director",
-        org: "SDSN Indonesia",
-        avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&q=80"
-    },
-    {
-        name: "Amirah Majid",
-        role: "Senior Manager, Asia Pacific Lead",
-        org: "Networks Program",
-        avatar: "https://www.unsdsn.org/assets/icons/photo-placeholder-alt.svg"
-    },
-    {
-        name: "Gautham Varada Narayan",
-        role: "Manager, Asia Pacific",
-        org: "Networks Program",
-        avatar: "/src/assets/team/gautham.png"
     }
 ];
 
