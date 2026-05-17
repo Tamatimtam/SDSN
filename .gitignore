@@ -2,3 +2,7 @@
 ngrok.log
 http.log
 /.venv
+*.log
+.DS_Store
+Thumbs.db
+file.jpeg
