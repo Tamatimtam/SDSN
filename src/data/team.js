@@ -44,7 +44,7 @@ export const team = [
     },
     {
         name: "Christian Nataniel Yosua Purba",
-        role: "IT Manager",
+        role: "Technology Innovation Manager",
         org: "SDSN Indonesia",
         avatar: "/src/assets/team/christian.png"
     }
